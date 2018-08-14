@@ -6,9 +6,6 @@ class Button extends Component {
             
             <div class="btn-container">
                 <button className="btn">
-                <a href="/create">Create a Card</a>
-                </button>
-                <button className="btn">
                 <a href="/edit">Edit a Card</a>
                 </button>
                 <button className="btn">
