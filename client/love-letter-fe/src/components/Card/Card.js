@@ -6,17 +6,20 @@ class Card extends Component {
     constructor() {
         super()
         this.state = {
-            from: String,
-            to: String,
-            message: String,
+            card: []
         }
     }
 
     componentDidMount() {
-            axios.get('/')
-            .then((res) => {
-                console.log(res)
+            axios.get('http://localhost:3001/')
+            .then(res => {
+                console.log(res.data.map(result => ))
             })
+            // .then(response => this.setState({
+            //     card: response.data
+            // }))
+            .catch(err => console.log(err))
+
     }
 
     render(){

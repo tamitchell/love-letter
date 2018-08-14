@@ -2,14 +2,14 @@ const Letter = require('./db/models')
 
 module.exports = {
     index: (req, res) => {
-        Letter.find({})
-        .then((letter) => {
-            console.log(letter)
-            res.sendFile(__dirname + '/client/build/index.html')
+        Letter.find()
+        .populate("letters")
+        .then((result) => {
+            res.send(result)      
         })
     },
     new: (req, res) => {
-        res.render("/new")
+        // res.render("/new")
         console.log("new")
     },
     create: (req, res) => {

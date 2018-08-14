@@ -4,7 +4,7 @@ class Button extends Component {
     render(){
         return(
             
-            <div class="btn-container">
+            <div className="btn-container">
                 <button className="btn">
                 <a href="/edit">Edit a Card</a>
                 </button>

@@ -4,7 +4,6 @@ import {
   BrowserRouter as Router,
   Link,
   Route,
-  Redirect,
   Switch
 } from 'react-router-dom'
 import Form from '../Form/Form'

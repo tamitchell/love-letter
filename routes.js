@@ -4,6 +4,7 @@ const controller = require('./controller.js')
 //CREATE (2)
 router.get('/new', controller.new)
 router.post('/create', controller.create)
+
 //READ (1)
 router.get('/', controller.index)
 //UPDATE
