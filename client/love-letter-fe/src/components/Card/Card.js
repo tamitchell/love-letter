@@ -11,9 +11,10 @@ class Card extends Component {
     }
 
     componentDidMount() {
+        const cardId = this.props.match.
             axios.get('http://localhost:3001/')
             .then(res => {
-                console.log(res.data.map(result => ))
+                console.log(res.data[].)
             })
             // .then(response => this.setState({
             //     card: response.data

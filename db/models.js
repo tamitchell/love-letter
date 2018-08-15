@@ -1,11 +1,19 @@
 const mongoose = require('./connection.js')
+const Schema = mongoose.Schema;
 
-const Letter = new mongoose.Schema({
-  from: String,
-  to: String,
-  message: String,
-}, {
-  timestamps: true
-})
+const Story = new Schema({
+    title: String,
+    author: String,
+    you:String,
+    need: String,
+    go: String,
+    search: String,
+    find: String,
+    take: String,
+    return: String,
+    changed: String,
 
-module.exports = mongoose.model('Letter', Letter)
+  })
+
+
+module.exports = mongoose.model("Story", Story);

@@ -1,12 +1,11 @@
-const mongoose = require('./models')
-const Letter = mongoose.model('Letter')
-const letterData = require('./love-letter.json')
-
-Letter.remove({})
+const mongoose = require('./models.js')
+const Story = mongoose.model('./models.js')
+const storyData = require('../db/')
+Story.remove({})
     .then(()=>{
-        Letter.collection.insert(letterData)
-        .then((loveLetter) => {
-            console.log(loveLetter)
+        Story.collection.insert(storyData)
+        .then((story) => {
+            console.log(story)
             process.exit()
         })
     })

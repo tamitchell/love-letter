@@ -1,9 +1,8 @@
-const Letter = require('./db/models')
-
+const Story = require('./db/models')
 module.exports = {
     index: (req, res) => {
-        Letter.find()
-        .populate("letters")
+        Story.find()
+        .populate()
         .then((result) => {
             res.send(result)      
         })
@@ -13,13 +12,20 @@ module.exports = {
         console.log("new")
     },
     create: (req, res) => {
-        Letter.create({
-            from: req.body.from,
-            to: req.body.to,
-            message: req.body.message
-        }).then(letterInstance => {
-            console.log(letterInstance)
-            letters.push(letterInstance)
+        Story.create({
+            title: req.body.title,
+            author: req.body.author,
+            you: req.body.you,
+            need: req.body.need,
+            go: req.body.go,
+            search: req.body.search,
+            find: req.body.find,
+            take: req.body.take,
+            return: req.body.return,
+            changed: req.body.changed,
+        }).then(storyInstance => {
+            console.log(storyInstance)
+            letters.push(storyInstance)
             letters.save(err => {
                 res.redirect(`/`);
               });
