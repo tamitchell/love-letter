@@ -6,36 +6,79 @@ import {
   Route,
   Switch
 } from 'react-router-dom'
+import Login from '../Login/Login'
+import Signup from '../Signup/Signup'
+import Story from '../Stories/Stories'
 import Form from '../Form/Form'
 import Card from '../Card/Card'
 import Button from '../Button/Button'
 
 class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      email: '',
+      password: '',
+      isLoggedIn: false
+    }
+  }
+
+  componentDidMount () {
+    if (localStorage.token) {
+      this.setState({
+        isLoggedIn: true
+      })
+    } else {
+      this.setState({
+        isLoggedIn: false
+      })
+    }
+  }
+
+  handleInput (e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
   render() {
     return (
       <Router>
           <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Welcome to the LOVE Module</h1>
+          <h1 className="App-title">Story Teller</h1>
           <nav>
-              <Link to="/"> Home </Link>
-              <Link to="/new">Create A Card</Link>
+              <Link to="/login"> Login </Link>
+              <Link to="/signup">Signup</Link>
+              <Link to="/create">Write a Story</Link>
+              <Link to="/">Stories</Link>
           </nav>
         </header>
         <Switch>
-          <Route path="/new" render={(props) =>{
+          <Route path="/login" render={(props) => {
+            return(
+              <Login />
+            )
+          }}
+          />
+          <Route path="/signup" render={(props) =>{
             return(
               <div>
-              <Form />
+              <Signup />
               </div>
+            )
+          }}
+          />
+          <Route path="/create" render={() => {
+            return (
+              <Form />
             )
           }}
           />
           <Route path="/" render={(props) => {
             return (
               <div>
-                <Card />
-                <Button />
+                <Story />
                 </div>
             )
           }}

@@ -9,9 +9,13 @@ module.exports = {
             res.json(story)
         })
     },
-    new: (req, res) => {
-        // res.render("/new")
-        console.log("new")
+    show: (req, res) => {
+        Story.findById(req.params.id)
+        .then((err, story) => {
+            if(err) return next(err)
+            console.log(story)
+            res.json(story)
+        })
     },
     create: (req, res) => {
         Story.create({
@@ -23,22 +27,32 @@ module.exports = {
             search: req.body.search,
             find: req.body.find,
             take: req.body.take,
-            return: req.body.return,
+            returned: req.body.returned,
             changed: req.body.changed,
         }).then(storyInstance => {
             console.log(storyInstance)
-            letters.push(storyInstance)
-            letters.save(err => {
-                res.redirect(`/`);
+            stories.push(storyInstance)
+            stories.save(err => {
+                res.redirect(`/story`);
               });
         })
         console.log("create")
     },
     update: (req, res) => {
-        //
+        Story.findByIdAndUpdate(req.params.id)
+        .then((err, updated) => {
+            if (err) return next(err)
+            console.log("Here's the update" + updated)
+            res.json(updated)
+        })
         console.log("update")
     },
     delete: (req, res) => {
+        Story.findByIdAndRemove(req.params.id)
+        .then((err, deleted) => {
+            if (err) return next(err)
+            res.json(deleted)
+         })
         console.log("delete")
     }
 }

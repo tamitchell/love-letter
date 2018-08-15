@@ -9,7 +9,7 @@ const Story = new Schema({
     search: String,
     find: String,
     take: String,
-    return: String,
+    returned: String,
     changed: String,
     author: {
       type: Schema.Types.ObjectId,

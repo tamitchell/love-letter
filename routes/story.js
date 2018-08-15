@@ -3,11 +3,16 @@ const router  = express.Router()
 const storyController = require('../controllers/story')
 
 //CREATE (2)
-router.get('/new', storyController.new)
-router.post('/create', storyController.create)
+router.post('/', storyController.create)
 
 //READ (1)
-router.get('/', storyController.index)
+
+//Get all stories
+router.get('/api', storyController.index)
+
+//Get story by :id
+router.get('/:id', storyController.show)
+
 //UPDATE
 router.put('/update', storyController.update)
 //DELETE

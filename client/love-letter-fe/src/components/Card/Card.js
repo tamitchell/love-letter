@@ -11,15 +11,6 @@ class Card extends Component {
     }
 
     componentDidMount() {
-        const cardId = this.props.match.
-            axios.get('http://localhost:3001/')
-            .then(res => {
-                console.log(res.data[].)
-            })
-            // .then(response => this.setState({
-            //     card: response.data
-            // }))
-            .catch(err => console.log(err))
 
     }
 
