@@ -1,5 +1,4 @@
-const mongoose = require('./models')
-const Story = mongoose.model('Story')
+const Story = require('../models/Story')
 const storyData = require('./data.json')
 
 Story.remove({})

@@ -1,4 +1,6 @@
-const Story = require('./db/models')
+const mongoose = require('../models/Story')
+const Story = mongoose.model('Story')
+
 module.exports = {
     index: (req, res) => {
         Story.find({})

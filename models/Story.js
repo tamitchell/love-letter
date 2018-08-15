@@ -1,9 +1,8 @@
-const mongoose = require('./connection.js')
+const mongoose = require('../db/connection')
 const Schema = mongoose.Schema;
 
 const Story = new Schema({
     title: String,
-    author: String,
     you:String,
     need: String,
     go: String,
@@ -12,6 +11,10 @@ const Story = new Schema({
     take: String,
     return: String,
     changed: String,
+    author: {
+      type: Schema.Types.ObjectId,
+      ref: "User"
+    },
   })
 
 
