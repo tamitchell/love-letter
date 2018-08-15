@@ -12,7 +12,6 @@ const Story = new Schema({
     take: String,
     return: String,
     changed: String,
-
   })
 
 

@@ -1,10 +1,10 @@
 const Story = require('./db/models')
 module.exports = {
     index: (req, res) => {
-        Story.find()
-        .populate()
-        .then((result) => {
-            res.send(result)      
+        Story.find({})
+        .then(story => 
+            {console.log(story)
+            res.json(story)
         })
     },
     new: (req, res) => {
