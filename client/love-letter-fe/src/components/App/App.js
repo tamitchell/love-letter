@@ -9,6 +9,7 @@ import {
 import Login from '../Login/Login'
 import Signup from '../Signup/Signup'
 import Story from '../Stories/Stories'
+import Edit from '../Edit/Edit'
 import Form from '../Form/Form'
 
 
@@ -80,6 +81,12 @@ class App extends Component {
                 <Story />
                 </div>
             )
+          }}
+          />
+          <Route path="/story/edit/" render={() => {
+            <div>
+              <Edit />
+              </div>
           }}
           />
           </Switch>

@@ -11,7 +11,7 @@ router.post('/api', storyController.create)
 router.get('/api', storyController.index)
 
 //Get story by :id
-router.get('/:id', storyController.show)
+router.get('/api/:id', storyController.show)
 
 //UPDATE
 router.put('/update/:id', storyController.update)

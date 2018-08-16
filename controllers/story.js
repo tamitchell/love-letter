@@ -11,8 +11,7 @@ module.exports = {
     },
     show: (req, res) => {
         Story.findById(req.params.id)
-        .then((err, story) => {
-            if(err) return err
+        .then(story => {
             console.log(story)
             res.json(story)
         })
@@ -40,12 +39,10 @@ module.exports = {
     },
     update: (req, res) => {
         Story.findByIdAndUpdate(req.params.id)
-        .then((err, updated) => {
-            if (err) return next(err)
+        .then(updated => {
             console.log("Here's the update" + updated)
             res.json(updated)
         })
-        console.log("update")
     },
     delete: (req, res) => {
         Story.findByIdAndRemove(req.params.id)

@@ -23,7 +23,7 @@ class StoryShow extends Component {
                 <p>{this.state.story.take}</p>
                 <p>{this.state.story.return}</p>
                 <p>{this.state.story.changed}</p>
-                <Link to={`/story/update/${this.state.story._id}`}>
+                <Link to={`/story/${this.state.story._id}/edit`}>
                     <form>
                     <button type="submit">Edit</button>
                     </form>
