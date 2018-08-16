@@ -14,8 +14,8 @@ import Form from '../Form/Form'
 
 
 class App extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       email: '',
       password: '',
@@ -83,11 +83,7 @@ class App extends Component {
             )
           }}
           />
-          <Route path="/story/edit/" render={() => {
-            <div>
-              <Edit />
-              </div>
-          }}
+          <Route path="/story/edit/:id" component={Edit}
           />
           </Switch>
       </div>
