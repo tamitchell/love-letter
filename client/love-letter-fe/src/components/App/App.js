@@ -10,8 +10,7 @@ import Login from '../Login/Login'
 import Signup from '../Signup/Signup'
 import Story from '../Stories/Stories'
 import Form from '../Form/Form'
-import Card from '../Card/Card'
-import Button from '../Button/Button'
+
 
 class App extends Component {
   constructor() {
@@ -51,7 +50,7 @@ class App extends Component {
               <Link to="/login"> Login </Link>
               <Link to="/signup">Signup</Link>
               <Link to="/create">Write a Story</Link>
-              <Link to="/">Stories</Link>
+              <Link to="/stories_all">Stories</Link>
           </nav>
         </header>
         <Switch>
@@ -75,7 +74,7 @@ class App extends Component {
             )
           }}
           />
-          <Route path="/" render={(props) => {
+          <Route path="/stories_all" render={(props) => {
             return (
               <div>
                 <Story />

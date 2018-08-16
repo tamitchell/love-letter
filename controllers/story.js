@@ -12,7 +12,7 @@ module.exports = {
     show: (req, res) => {
         Story.findById(req.params.id)
         .then((err, story) => {
-            if(err) return next(err)
+            if(err) return err
             console.log(story)
             res.json(story)
         })
@@ -20,7 +20,7 @@ module.exports = {
     create: (req, res) => {
         Story.create({
             title: req.body.title,
-            author: req.body.author,
+            // author: req.body.author,
             you: req.body.you,
             need: req.body.need,
             go: req.body.go,

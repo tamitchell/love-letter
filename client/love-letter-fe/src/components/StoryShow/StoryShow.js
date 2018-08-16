@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 
 class StoryShow extends Component {
     constructor(props){
@@ -11,6 +12,7 @@ class StoryShow extends Component {
     render(){
         return (
             <div>
+
                 <p>{this.state.story.title}</p>
                 <p>{this.state.story.author}</p>
                 <p>{this.state.story.you}</p>
@@ -21,6 +23,16 @@ class StoryShow extends Component {
                 <p>{this.state.story.take}</p>
                 <p>{this.state.story.return}</p>
                 <p>{this.state.story.changed}</p>
+                <Link to={`/story/update/${this.state.story._id}`}>
+                    <form>
+                    <button type="submit">Edit</button>
+                    </form>
+                </Link>
+                <Link to={`/story/delete/${this.state.story._id}`}>
+                    <form>
+                    <button type="submit">Delete</button>
+                    </form>
+                </Link>
                 {/* {this.props.isLoggedIn ? 
                     <div>{this.props.story.you}</div>: ''} */}
                 </div>

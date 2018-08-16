@@ -1,0 +1,5 @@
+TODO: Update controller for story is ringing up as undefined, why
+TODO: Make it pretty
+TODO: Figure out how routes work
+TODO: Implement delete function
+
