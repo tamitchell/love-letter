@@ -4,7 +4,7 @@ const userController = require('../controllers/user')
 
 router.get('/login', userController.login)
 router.get('/signup', userController.signup)
-router.get('/logout', userController.logout)
+// router.get('/logout', userController.logout)
 
 
 module.exports = router;

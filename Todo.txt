@@ -2,3 +2,16 @@ TODO: Make it pretty
 TODO: Figure out how routes work
 TODO: Implement delete function
 
+ // Make sure the res.data actually contains the stories(It could be returning it as a json and may need to parse it with json())
+      // const newList = this.state.stories.concat(res.data);
+      // The top one may cause duplicates of this function is call many times since it would call the api everytime.
+      // In that case you might as well use the bottom one if this componentDIdMount is only call once.
+    
+
+"editor.formatOnSave": true,
+"html.format.enable": true,
+"html.format.indentHandlebars": true,
+"html.format.maxPreserveNewLines": 0
+
+add these to your setting to prettier everytime you save.
+To access settings, press CMD + ,
