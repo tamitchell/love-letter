@@ -75,7 +75,7 @@ class App extends Component {
             )
           }}
           />
-          <Route path="/stories_all" render={(props) => {
+          <Route path="/stories_all" render={() => {
             return (
               <div>
                 <Story />

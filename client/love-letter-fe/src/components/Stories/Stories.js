@@ -14,10 +14,9 @@ class Story extends Component {
     axios
       .get("http://localhost:3001/story/api")
       .then(res => {
-        console.log(res.data);
-          const newList = res.data;
+
         this.setState({
-          stories: newList
+          stories: res.data
           // stories: this.state.stories.push(res.data)
         });
       })

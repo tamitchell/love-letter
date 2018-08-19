@@ -5,21 +5,20 @@ module.exports = {
     index: (req, res) => {
         Story.find({})
         .then(story => 
-            {console.log(story)
+            {
             res.json(story)
         })
     },
     show: (req, res) => {
         Story.findById(req.params.id)
         .then(story => {
-            console.log(story)
             res.json(story)
         })
     },
     create: (req, res) => {
         Story.create({
             title: req.body.title,
-            // author: req.body.author,
+            author: req.body.author,
             you: req.body.you,
             need: req.body.need,
             go: req.body.go,
@@ -57,10 +56,8 @@ module.exports = {
     },
     delete: (req, res) => {
         Story.findByIdAndRemove(req.params.id)
-        .then((err, deleted) => {
-            if (err) return next(err)
-            res.json(deleted)
-         })
-        console.log("delete")
+        .then(deleted => {
+            res.redirect(`/stories_all`)
+        })
     }
 }

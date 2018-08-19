@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios'
 
 class StoryShow extends Component {
   constructor(props) {
@@ -9,8 +10,7 @@ class StoryShow extends Component {
     };
   }
   render() {
-    const story = this.state.story; //set the story as a alias to make the bottom stuff shorter and more manageble
-    // console.log(story); // This will show the information in the console to make sure things are correct.
+    const story = this.state.story; 
     return (
       <div>
         <p>{story.title}</p>
@@ -23,19 +23,11 @@ class StoryShow extends Component {
         <p>{story.take}</p>
         <p>{story.return}</p>
         <p>{story.changed}</p>
-        {/* <Link to={`/story/${this.state.story._id}/edit`}> */}
         <Link to={`/story/edit/${story._id}`}>
           <form>
             <button type="submit">Edit</button>
           </form>
         </Link>
-        <Link to={`/story/delete/${story._id}`}>
-          <form>
-            <button type="submit">Delete</button>
-          </form>
-        </Link>
-        {/* {this.props.isLoggedIn ? 
-                    <div>{this.props.story.you}</div>: ''} */}
       </div>
     );
   }
