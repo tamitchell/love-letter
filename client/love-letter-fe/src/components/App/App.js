@@ -11,6 +11,7 @@ import Signup from '../Signup/Signup'
 import Story from '../Stories/Stories'
 import Edit from '../Edit/Edit'
 import Form from '../Form/Form'
+import axios from 'axios'
 
 
 class App extends Component {
