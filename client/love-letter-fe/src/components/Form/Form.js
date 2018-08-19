@@ -44,11 +44,6 @@ class Form extends Component {
               </div>
 
               <div className="">
-            <label htmlFor="author">By</label>
-              <input type="text" id="author" onChange={this.onChange} name="author" placeholder="Author"/>
-              </div>
-
-              <div className="">
               <label htmlFor="you">Enable your Protagonist: A character is in a zone of comfort</label>
               <input type="text" id="you" onChange={this.onChange} name="you" placeholder=" A character is in a zone of comfort"/>
               </div>

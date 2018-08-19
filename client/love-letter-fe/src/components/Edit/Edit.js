@@ -53,11 +53,6 @@ class Edit extends Component {
   </div>
 
   <div className="">
-<label htmlFor="author">By</label>
-  <input type="text" id="author" value={this.state.stories.author} onChange={this.onChange} name="author" placeholder="Author"/>
-  </div>
-
-  <div className="">
   <label htmlFor="you">Enable your Protagonist: A character is in a zone of comfort</label>
   <input type="text" id="you" value={this.state.stories.you} onChange={this.onChange} name="you" placeholder=" A character is in a zone of comfort"/>
   </div>
