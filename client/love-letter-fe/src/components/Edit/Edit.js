@@ -23,9 +23,10 @@ class Edit extends Component {
         this.setState({stories:storyEditState})
     }
 
-    handleDelete () {
+    handleDelete = (e) => {
+        e.preventDefault()
         const { title, author, you, need, go, search, find, take, returned, changed } = this.state.stories
-        axios.delete('http://localhost:3001/story/delete/' + this.props.match.params.id, {title, author, you, need, go, search, find, take, returned, changed})
+        axios.delete('http://localhost:3001/story/delete/' + this.props.match.params.id, {params: {title, author, you, need, go, search, find, take, returned, changed}})
       }
 
     onSubmit = (e) => {
