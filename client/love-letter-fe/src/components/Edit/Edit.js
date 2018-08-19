@@ -5,9 +5,18 @@ class Edit extends Component {
     constructor(props){
         super(props)
         this.state={
-            stories: {}
+            stories: [
+                {title: ''}, 
+                {author: ''}, 
+                {you: ''}, 
+                {need: ''}, 
+                {go: ''}, 
+                {search: ''}, 
+                {find:''}, 
+                {take: ''}, 
+                {returned: ''}, 
+                {changed: ''}]
         }
-        
     }
     componentDidMount(){
         axios.get('http://localhost:3001/story/api/' + this.props.match.params.id)
@@ -25,23 +34,22 @@ class Edit extends Component {
         this.setState({stories:storyEditState})
     }
 
-    // onSubmit = (e) => {
-    //     e.preventDefault()
-    //     const { title, author, you, need, go, search, find, take, returned, changed } = this.state.stories
-    //     axios.put('http://localhost:3001/story/api/' + this.props.match.params.id, {title, author, you, need, go, search, find, take, returned, changed})
-    //     .then((result) => {
-    //         this.props.history.push("/story_all/" + this.props.match.params.id)
-    //     })
-    //     .catch(err => {
-    //         console.log(err)
-    //     })
-    // }
+    onSubmit = (e) => {
+        e.preventDefault()
+        const { title, author, you, need, go, search, find, take, returned, changed } = this.state.stories
+        axios.put('http://localhost:3001/story/update/' + this.props.match.params.id, {title, author, you, need, go, search, find, take, returned, changed})
+        .then((result) => {
+            this.props.history.push("/stories_all")
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
 
     render(){
         return(
             <div>
-                  <form action={`http://localhost:3001/story/update/${this.state.stories._id}?_method=put`} method="POST">
-                   {/* <form onSubmit={this.onSubmit}> */}
+                  <form onSubmit={this.onSubmit}>
 
 <div className="">
 <label htmlFor="title">Title</label>
@@ -75,7 +83,7 @@ class Edit extends Component {
 
    <div className="">
   <label htmlFor="find">Meeting with the Goddess</label>
-  <input type="text" id="find" onChange={this.onChange} name="find" placeholder="The character gets what they wanted"/>
+  <input type="text" id="find" value={this.state.stories.find} onChange={this.onChange} name="find" placeholder="The character gets what they wanted"/>
   </div>
 
    <div className="">
@@ -85,18 +93,18 @@ class Edit extends Component {
 
   <div className="">
   <label htmlFor="take">Meet Your Maker:</label>
-  <input type="text"  onChange={this.onChange} id="take" name="take" placeholder="They pay a heavy price"/>
+  <input type="text" value={this.state.stories.take} onChange={this.onChange} id="take" name="take" placeholder="They pay a heavy price"/>
   </div>
 
 
 <div className="">
   <label htmlFor="returned">Bringing It Home:</label>
-  <input type="text" id="returned"  name="returned" onChange={this.onChange} placeholder="They return to their familiar situation"/>
+  <input type="text" id="returned" value={this.state.stories.returned} name="returned" onChange={this.onChange} placeholder="They return to their familiar situation"/>
   </div>
 
       <div className="">
   <label htmlFor="changed">Master of Both Worlds:</label>
-  <input type="text" id="changed" name="changed" onChange={this.onChange} placeholder="The character has changed in someway"/>
+  <input type="text" id="changed" value={this.state.stories.changed} name="changed" onChange={this.onChange} placeholder="The character has changed in someway"/>
   </div>
 
   <input type="submit" value="Update Story"/>
