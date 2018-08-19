@@ -38,7 +38,18 @@ module.exports = {
         console.log("create")
     },
     update: (req, res) => {
-        Story.findByIdAndUpdate(req.params.id)
+        Story.findOneAndUpdate({_id: req.params.id}, {$set : {
+            title: req.body.title,
+            author: req.body.author,
+            you: req.body.you,
+            need: req.body.need,
+            go: req.body.go,
+            search: req.body.search,
+            find: req.body.find,
+            take: req.body.take,
+            return: req.body.returned,
+            change: req.body.change
+          }})
         .then(updated => {
             console.log("Here's the update" + updated)
             res.json(updated)

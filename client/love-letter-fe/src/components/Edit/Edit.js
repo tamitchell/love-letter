@@ -5,24 +5,13 @@ class Edit extends Component {
     constructor(props){
         super(props)
         this.state={
-            stories: [
-                {title: ''}, 
-                {author: ''}, 
-                {you: ''}, 
-                {need: ''}, 
-                {go: ''}, 
-                {search: ''}, 
-                {find:''}, 
-                {take: ''}, 
-                {returned: ''}, 
-                {changed: ''}]
+            stories: {}
         }
     }
     componentDidMount(){
         axios.get('http://localhost:3001/story/api/' + this.props.match.params.id)
         .then(res => {
             this.setState({stories: res.data})
-            console.log(this.state.stories)
         })
         .catch(e => {
             console.log(e);
@@ -38,8 +27,9 @@ class Edit extends Component {
         e.preventDefault()
         const { title, author, you, need, go, search, find, take, returned, changed } = this.state.stories
         axios.put('http://localhost:3001/story/update/' + this.props.match.params.id, {title, author, you, need, go, search, find, take, returned, changed})
-        .then((result) => {
-            this.props.history.push("/stories_all")
+        .then(result => {
+            console.log(result)
+            this.props.history.push(result)
         })
         .catch(err => {
             console.log(err)
@@ -86,11 +76,6 @@ class Edit extends Component {
   <input type="text" id="find" value={this.state.stories.find} onChange={this.onChange} name="find" placeholder="The character gets what they wanted"/>
   </div>
 
-   <div className="">
-  <label htmlFor="take">The Road of Trials:</label>
-  <input type="text" id="take" onChange={this.onChange} name="take" placeholder="They pay a heavy price"/>
-  </div>
-
   <div className="">
   <label htmlFor="take">Meet Your Maker:</label>
   <input type="text" value={this.state.stories.take} onChange={this.onChange} id="take" name="take" placeholder="They pay a heavy price"/>
@@ -99,7 +84,7 @@ class Edit extends Component {
 
 <div className="">
   <label htmlFor="returned">Bringing It Home:</label>
-  <input type="text" id="returned" value={this.state.stories.returned} name="returned" onChange={this.onChange} placeholder="They return to their familiar situation"/>
+  <input type="text" id="returned" value={this.state.stories.return} name="returned" onChange={this.onChange} placeholder="They return to their familiar situation"/>
   </div>
 
       <div className="">
