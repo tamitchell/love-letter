@@ -6,6 +6,7 @@ import {
   Route,
   Switch
 } from 'react-router-dom'
+import User from '../User/User'
 import Login from '../Login/Login'
 import Signup from '../Signup/Signup'
 import Story from '../Stories/Stories'
@@ -15,10 +16,10 @@ import axios from 'axios'
 
 
 class App extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
-      email: '',
+      username: '',
       password: '',
       isLoggedIn: false
     }
@@ -42,35 +43,11 @@ class App extends Component {
     })
   }
 
-  handleSignUp(e) {
-    e.preventDefault()
-    axios.post('http://localhost:3001/user/signup', {
-      email: this.state.email,
-      password: this.state.password
-    })
-    .then(response => {
-      localStorage.token = response.data.token
-      this.setState({ isLoggedIn: true })
-    })
-    .catch(err => console.log(err))
-  }
 
-  handleLogIn(e) {
-    e.preventDefault()
-    axios.post('http://localhost:3001/user/login', {
-      email: this.state.email,
-      password: this.state.password
-    })
-    .then(response => {
-      localStorage.token = response.data.token
-      this.setState({isLoggedIn: true})
-    })
-    .catch(err => console.log(err))
-  }
 
   handleLogOut() {
     this.setState({
-      email: '',
+      username: '',
       password: '',
       isLoggedIn: false
     })
@@ -86,6 +63,7 @@ class App extends Component {
           <nav>
               <Link to="/login"> Login </Link>
               <Link to="/signup">Signup</Link>
+              <Link to="/profile">Profile</Link>
               <Link to="/create">Write a Story</Link>
               <Link to="/stories_all">Stories</Link>
           </nav>
@@ -97,11 +75,17 @@ class App extends Component {
             )
           }}
           />
-          <Route path="/signup" render={(props) =>{
+          <Route path="/signup" render={(signdata) =>{
             return(
               <div>
-              <Signup />
+              <Signup signdata={signdata}/>
               </div>
+            )
+          }}
+          />
+          <Route path="/profile" render={() => {
+            return (
+              <User />
             )
           }}
           />

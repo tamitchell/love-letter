@@ -1,17 +1,15 @@
-const mongoose = require('../db/connection')
+const mongoose = require("../db/connection");
 const Schema = mongoose.Schema;
 
-const UserSchema = new mongoose.Schema({
-    local:
-    {email: String,
-    password: String
-    },
-    stories:  [{
-        type: Schema.Types.ObjectId,
-        ref: "Story"
-      }]
-})
+const User = new mongoose.Schema({
+  username: String,
+  password: String,
+  stories: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Story"
+    }
+  ]
+});
 
-mongoose.model('User', UserSchema)
-
-module.exports = mongoose
+module.exports = mongoose.model("User", User);
