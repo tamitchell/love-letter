@@ -1,115 +1,113 @@
 import React, { Component } from 'react';
 import './App.css';
-import {
-  BrowserRouter as Router,
-  Link,
-  Route,
-  Switch
-} from 'react-router-dom'
-import User from '../User/User'
-import Login from '../Login/Login'
-import Signup from '../Signup/Signup'
-import Story from '../Stories/Stories'
-import Edit from '../Edit/Edit'
-import Form from '../Form/Form'
+import {Route, Switch} from 'react-router-dom'
 import axios from 'axios'
+import Home from '../Home/Home'
+import Signup from '../Signup/Signup'
+import Login from '../Login/Login'
+import User from '../User/User'
+import Form from '../Form/Form'
+import Stories from '../Stories/Stories'
+import Navigation from '../Navigation/Navigation'
+
+const signupURL = 'http://localhost:4000/user/signup'
+const loginURL = 'http://localhost:4000/user/login'
+
 
 
 class App extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props) 
     this.state = {
-      username: '',
-      password: '',
-      isLoggedIn: false
+        username: '',
+        password: '',
+        isLoggedIn: false
+      }
     }
-  }
+    componentDidMount () {
+      if (localStorage.token) {
+        this.setState({
+          isLoggedIn: true
+        })
+      } else {
+        this.setState({
+          isLoggedIn: false
+        })
+      }
+    }
+  
+    handleInput = e => {
+        const userState = this.state;
+        userState[e.target.name] = e.target.value;
+        console.log(userState);
+        this.setState(userState);
+      }
 
-  componentDidMount () {
-    if (localStorage.token) {
+    handleSignUp = e => {
+      console.log(this.state);
+      e.preventDefault();
+      axios
+        .post(signupURL, {
+          username: this.state.username,
+          password: this.state.password
+        })
+        .then(response => {
+          localStorage.token = response.data.token;
+          // this.props.history.push("/profile");
+        })
+        .catch(err => console.log(err));
+    };
+    
+    handleLogIn (e) {
+        e.preventDefault()
+        axios.post(loginURL, {
+            username: this.state.username,
+            password: this.state.password
+        })
+        .then(res => {
+            localStorage.token = res.data.token
+            this.setState({isLoggedIn: true})
+        })
+        .catch(err => console.log(err))
+    }
+  
+    handleLogOut() {
       this.setState({
-        isLoggedIn: true
-      })
-    } else {
-      this.setState({
+        username: '',
+        password: '',
         isLoggedIn: false
       })
+      localStorage.clear()
     }
-  }
 
-  handleInput (e) {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
-
-
-
-  handleLogOut() {
-    this.setState({
-      username: '',
-      password: '',
-      isLoggedIn: false
-    })
-    localStorage.clear()
-  }
-
-  render() {
+render() {
     return (
-      <Router>
-          <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Story Teller</h1>
-          <nav>
-              <Link to="/login"> Login </Link>
-              <Link to="/signup">Signup</Link>
-              <Link to="/profile">Profile</Link>
-              <Link to="/create">Write a Story</Link>
-              <Link to="/stories_all">Stories</Link>
-          </nav>
-        </header>
+      <div>
+        <Navigation isLoggedIn={this.state.isLoggedIn}/>
         <Switch>
-          <Route path="/login" render={(props) => {
-            return(
-              <Login />
-            )
-          }}
-          />
-          <Route path="/signup" render={(signdata) =>{
-            return(
-              <div>
-              <Signup signdata={signdata}/>
-              </div>
-            )
-          }}
-          />
-          <Route path="/profile" render={() => {
-            return (
-              <User />
-            )
-          }}
-          />
-          <Route path="/create" render={() => {
-            return (
-              <Form />
-            )
-          }}
-          />
-          <Route path="/stories_all" render={() => {
-            return (
-              <div>
-                <Story />
-                </div>
-            )
-          }}
-          />
-          <Route path="/story/edit/:id" component={Edit}
-          />
-          </Switch>
+    <Route exact path='/' component={Home}/>
+    <Route exact path='/signup' render={() => {
+        return(
+            <Signup isLoggedIn={this.state.isLoggedIn} handleInput={this.handleInput} handleSignUp={this.handleSignUp} />
+        )
+    }}
+    />
+    <Route exact path='/login' render={() => {
+        return(
+            <Login isLoggedIn={this.state.isLoggedIn} handleInput={this.handleInput} handleLogIn={this.handleLogIn} />
+        )
+    }}/>
+    <Route exact path='/user/:id/profile' render={() => {
+      return(
+        <User />
+      )
+    }}/>
+    <Route exact path='/story/create' component={Form}/>
+    <Route exact path='/all_stories' component={Stories}/>
+</Switch>
       </div>
-      </Router>
-    );
-  }
+    )
+}
 }
 
 export default App;

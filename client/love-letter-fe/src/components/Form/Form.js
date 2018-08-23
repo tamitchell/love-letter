@@ -39,7 +39,7 @@ class Form extends Component {
       changed
     } = this.state;
     axios
-      .post("http://localhost:3001/story/api", {
+      .post("http://localhost:4000/story/api", {
         title,
         author,
         you,
@@ -59,6 +59,7 @@ class Form extends Component {
   render() {
     return (
       <div className="card">
+      <h1>Write A Story</h1>
         <form onSubmit={this.onSubmit}>
           <div className="">
             <label htmlFor="title">Title</label>

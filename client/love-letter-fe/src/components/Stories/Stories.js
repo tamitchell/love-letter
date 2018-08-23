@@ -12,7 +12,7 @@ class Story extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:3001/story/api")
+      .get("http://localhost:4000/story/api")
       .then(res => {
 
         this.setState({
@@ -30,7 +30,11 @@ class Story extends Component {
         </div>
       );
     });
-    return <div>{showStory}</div>;
+    return <div>
+      <h1>All Stories</h1>
+    {showStory}
+    
+    </div>;
   }
 }
 
