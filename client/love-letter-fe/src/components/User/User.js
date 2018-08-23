@@ -14,6 +14,9 @@ class User extends Component {
         stories: []
       }
   }
+   componentDidMount(){
+     
+   }
     render() {
       return (
         <div>

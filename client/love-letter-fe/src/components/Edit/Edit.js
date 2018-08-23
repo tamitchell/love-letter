@@ -9,7 +9,7 @@ class Edit extends Component {
         }
     }
     componentDidMount(){
-        axios.get('http://localhost:3001/story/api/' + this.props.match.params.id)
+        axios.get('http://localhost:4000/story/api/' + this.props.match.params.id)
         .then(res => {
             this.setState({stories: res.data})
         })

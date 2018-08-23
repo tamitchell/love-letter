@@ -65,7 +65,11 @@ module.exports = {
     User.findOne({ _id: req.params.id })
       .populate("stories")
       .then(user => {
-        console.log("Here's the stories you've written" + user);
+        console.log(user);
+        res.json(user)
       });
+  },
+  addStory: (req, res) => {
+    User.findById(req.params.id)
   }
 };
