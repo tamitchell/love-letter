@@ -13,6 +13,14 @@ app.use(function(req, _, next) {
   req.data = data;
   return next()
 })
+
+mongoose.connect('mongodb://localhost:27017/local')
+let db = mongoose.connection;
+db.on('error', ()=> {console.log( '---FAILED to connect to mongoose')})
+db.once('open', () => {
+ console.log( '+++Connected to mongoose')
+})
+
 setupGraphQL(app)
 app.listen(4000)
 console.log("Running a GraphQL API server at http://localhost:4000/graphql");

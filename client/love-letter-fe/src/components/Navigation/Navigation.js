@@ -3,14 +3,7 @@ import { Navbar, NavItem } from "react-materialize";
 import { Link } from "react-router-dom";
 
 class Navigation extends Component {
-  // constructor(props){
-  //     super(props)
 
-  //     //Don't need to set state because state is being passed down from app
-  //     // this.state = {
-  //     //     isLoggedIn: this.props.isLoggedIn
-  //     // }
-  // }
   render() {
     return (
       <div>

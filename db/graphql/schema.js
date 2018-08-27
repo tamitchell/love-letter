@@ -12,7 +12,9 @@ module.exports = new GraphQLSchema({
     mutation: new GraphQLObjectType ({
         name: "Mutation",
         fields: {
-            create: story.createStoryMutation
+            create: story.createStoryMutation,
+            update: story.updateStory,
+            delete: story.deleteStory
         }
     })
 })

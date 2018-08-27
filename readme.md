@@ -8,11 +8,7 @@ Table of Contents
  * Installation
  * Setting Up the Server
   * Defining the Schema
-  * Starting the Bot with bot_start.php
- * Using the Bot
- * IRC Message Hooks
- * Other IRC Hooks
- * Design Decisions
+
 
 
 INTRODUCTION

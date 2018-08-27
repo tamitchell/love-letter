@@ -109,18 +109,16 @@ const createStoryMutation = {
     }
 }
 
-// const updateStory = {
-//   console.log('update story')
-// }
+const updateStory = {
+}
 
-// const deleteStory ={
-//     console.log("Story deleted")
-// }
+const deleteStory ={
+}
 
 module.exports = {
     type: storyType,
     getStories,
-    createStoryMutation
-    // updateStory,
-    // deleteStory
+    createStoryMutation,
+    updateStory,
+    deleteStory
 }
