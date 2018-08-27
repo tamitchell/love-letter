@@ -44,7 +44,6 @@ class App extends Component {
       }
 
     handleSignUp = e => {
-      console.log(this.state);
       e.preventDefault();
       axios
         .post(signupURL, {
@@ -53,7 +52,6 @@ class App extends Component {
         })
         .then(response => {
           localStorage.token = response.data.token;
-          // this.props.history.push("/profile");
         })
         .catch(err => console.log(err));
     };
@@ -88,7 +86,10 @@ render() {
     <Route exact path='/' component={Home}/>
     <Route exact path='/signup' render={() => {
         return(
-            <Signup isLoggedIn={this.state.isLoggedIn} handleInput={this.handleInput} handleSignUp={this.handleSignUp} />
+            <Signup 
+            isLoggedIn={this.state.isLoggedIn} 
+            handleInput={this.handleInput} 
+            handleSignUp={this.handleSignUp} />
         )
     }}
     />
