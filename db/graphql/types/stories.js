@@ -129,6 +129,7 @@ const updateStory = {
     title: { type: GraphQLString },
     tagline: { type: GraphQLString },
     summary: { type: GraphQLString },
+    author: {type: GraphQLString },
     rating: { type: GraphQLInt },
     you: { type: GraphQLString },
     need: { type: GraphQLString },
@@ -140,34 +141,17 @@ const updateStory = {
     changed: { type: GraphQLString }
   },
   resolve(_, args) {
-    Story.findByIdAndUpdate(args.id, {
-      $set: {
-        title: args.title,
-        tagline: args.tagline,
-        summary: args.summary,
-        author: args.author,
-        rating: args.rating,
-        you: args.you,
-        need: args.need,
-        go: args.go,
-        search: args.search,
-        find: args.find,
-        take: args.take,
-        returned: args.returned,
-        changed: args.changed
-      }
-    }, {new: true}).then(updated => {
-      console.log(updated);
-      return updated;
-    });
+   return Story.findByIdAndUpdate(args.id, {
+      $set: { ...args
+      }}, {new: true})
   }
 };
 
 const deleteStory = {
     type: storyType,
-    args: {id: {type: new GraphQLNonNull(GraphQLString)}},
+    args: {id: {type: GraphQLString}},
     resolve(_, args) {
-        Story.findByIdAndRemove(args.id)
+        return Story.findOneAndRemove(args.id)
     }
 };
 

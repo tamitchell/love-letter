@@ -12,7 +12,8 @@ module.exports = new GraphQLSchema({
         name: "Mutation",
         fields: {
             create: story.createStory,
-            update: story.updateStory
+            update: story.updateStory,
+            delete: story.deleteStory
         }
     })
 })
