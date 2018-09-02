@@ -1,6 +1,3 @@
-# Intro to GraphQL : Teach Yourself day
-
-
 Table of Contents
 ---------------------
 
@@ -16,8 +13,7 @@ INTRODUCTION
 
 >GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data. GraphQL provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools.
 
-
-Today, my goal is to be able to develop a basic CRUD-based backend using GraphQL with an existing MERN stack web application I developed, called Storyteller. Storyteller is a modern organizational web app that helps you organize each and every detail of your novels, poetry, and prose. It's meant to be a simple, yet powerful, application that blends visual tools so you get the right amount of help when you want it.
+My goal is to be able to develop a basic CRUD-based backend using GraphQL with an existing MERN stack web application I developed, called Storyteller. Storyteller is a modern organizational web app that helps you organize each and every detail of your novels, poetry, and prose. It's meant to be a simple, yet powerful, application that blends visual tools so you get the right amount of help when you want it.
 
 For more GraphQL documentation and tutorials, you can try the following:
 
@@ -182,7 +178,7 @@ This is part of what GraphQL so special, no more multiple routes!
 Defining the Schema
 -------------
 
-Remembering that GraphQL works with the database, rather than being one,one still needs to define a schema.
+Remembering that GraphQL works with the database, rather than being one, one still needs to define a schema.
 
 Looking at the big picture once more, the schema looks like this.
 

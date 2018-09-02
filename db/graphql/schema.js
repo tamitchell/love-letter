@@ -1,20 +1,19 @@
 const {GraphQLObjectType, GraphQLSchema} = require('graphql')
-
 const story = require('./types/stories')
 
 module.exports = new GraphQLSchema({
     query: new GraphQLObjectType({
         name: "Query",
         fields: {
-            stories: story.getStories
+            getStories: story.getStories
         }
     }),
     mutation: new GraphQLObjectType ({
         name: "Mutation",
         fields: {
-            create: story.createStoryMutation,
-            update: story.updateStory,
-            delete: story.deleteStory
+            create: story.createStory
+            // update: Story.updateStory,
+            // delete: Story.deleteStory
         }
     })
 })

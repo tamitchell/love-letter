@@ -3,7 +3,7 @@ const {GraphQLList,
 	GraphQLNonNull,
 	GraphQLInt,
 	GraphQLString} = require('graphql')
-const cuid = require('cuid')
+const Story = require('../../models/Stories')
 
 const storyType = new GraphQLObjectType ({
     name: "Story",
@@ -79,7 +79,7 @@ const getStories = {
     }
 }
 
-const createStoryMutation = {
+const createStory = {
     type: storyType,
     args: {
         title: {type: new GraphQLNonNull(GraphQLString)},
@@ -94,17 +94,27 @@ const createStoryMutation = {
         find: {type: GraphQLString},
         take: {type: GraphQLString},
         returned: {type: GraphQLString},
-        changed:{type: GraphQLString},
+        changed:{type: GraphQLString}
     },
-    resolve (_, args, ctx) {
-        const story = {
-            id: cuid(),
-            created_at: new Date(),
-            ...args
-        }
+    resolve(_, args) {
+        const story = new Story ({
+            title: args.title,
+            tagline: args.tagline,
+            summary: args.summary,
+            author: args.author,
+            rating: args.rating,
+            you: args.you,
+            need: args.need,
+            go: args.go,
+            search: args.search,
+            find: args.find,
+            take: args.take,
+            returned: args.returned,
+            changed: args.changed,            
+        })
         console.log(story)
-        ctx.data.stories.unshift(story)
-        story.save()
+        stories.unshift(story)
+        stories.save()
         return story
     }
 }
@@ -118,7 +128,7 @@ const deleteStory ={
 module.exports = {
     type: storyType,
     getStories,
-    createStoryMutation,
+    createStory,
     updateStory,
     deleteStory
 }
