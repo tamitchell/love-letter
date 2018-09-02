@@ -1,6 +1,6 @@
 const {graphqlExpress, graphiqlExpress} = require('graphql-server-express')
-const schema = require('./schema')
-const query = require('./query')
+const schema = require('../graphql/schema')
+const query = require('../graphql/query')
 
 module.exports = function setupGraphQL(server) {
     server.post("/graphql", [

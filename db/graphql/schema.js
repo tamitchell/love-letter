@@ -5,15 +5,14 @@ module.exports = new GraphQLSchema({
     query: new GraphQLObjectType({
         name: "Query",
         fields: {
-            getStories: story.getStories
+            stories: story.getStories
         }
     }),
     mutation: new GraphQLObjectType ({
         name: "Mutation",
         fields: {
-            create: story.createStory
-            // update: Story.updateStory,
-            // delete: Story.deleteStory
+            create: story.createStory,
+            update: story.updateStory
         }
     })
 })
