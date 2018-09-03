@@ -1,7 +1,7 @@
 import React from "react";
 import StoryShow from "../StoryShow/StoryShow";
 import { Query } from 'react-apollo';
-import gql from 'graphql-tag'
+import getStories from '../../Queries/Queries'
 
 function Stories({stories, getStoriesQuery}) {
     return(
@@ -11,35 +11,12 @@ function Stories({stories, getStoriesQuery}) {
             </div>
             <div className="stories-container">
            {stories.map(story => (
-               <div>
                <StoryShow key={story.id} story={story} getStoriesQuery={getStoriesQuery}/>
-               </div>
            ))}
             </div>
         </div>
     )
 }
-
-const getStories = gql`
-    query getStories {
-        stories {
-            id
-            title
-            author
-            tagline
-            summary
-            rating
-            you
-            need
-            go
-            search
-            find
-            take
-            returned
-            changed
-        }
-    }
-`
 
 export default function StoriesHOC(props) {
     return(

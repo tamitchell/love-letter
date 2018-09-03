@@ -1,50 +1,45 @@
 import React, {Component} from 'react'
-import axios from 'axios'
+import {getStories, updateStory} from '../../Queries/Queries'
+
 
 class Edit extends Component {
     constructor(props){
         super(props)
         this.state={
-            stories: {}
+            story: {}
         }
     }
-    componentDidMount(){
-        axios.get('http://localhost:4000/story/api/' + this.props.match.params.id)
-        .then(res => {
-            this.setState({stories: res.data})
-        })
-        .catch(e => {
-            console.log(e);
-        });
-    }
-    onChange = (e) => {
-        const storyEditState = this.state.stories
-        storyEditState[e.target.name] = e.target.value
-        this.setState({stories:storyEditState})
-    }
 
-    handleDelete = (e) => {
-        e.preventDefault()
-        const { title, author, you, need, go, search, find, take, returned, changed } = this.state.stories
-        axios.delete('http://localhost:3001/story/delete/' + this.props.match.params.id, {params: {title, author, you, need, go, search, find, take, returned, changed}})
-      }
+    // componentDidMount(){
+    //     axios.get('http://localhost:4000/story/api/' + this.props.match.params.id)
+    //     .then(res => {
+    //         this.setState({stories: res.data})
+    //     })
+    //     .catch(e => {
+    //         console.log(e);
+    //     });
+    // }
+    // onChange = (e) => {
+    //     const storyEditState = this.state.stories
+    //     storyEditState[e.target.name] = e.target.value
+    //     this.setState({stories:storyEditState})
+    // }
+
+    // handleDelete = (e) => {
+    //     e.preventDefault()
+    //     const { title, author, you, need, go, search, find, take, returned, changed } = this.state.stories
+    //     axios.delete('http://localhost:3001/story/delete/' + this.props.match.params.id, {params: {title, author, you, need, go, search, find, take, returned, changed}})
+    //   }
 
     onSubmit = (e) => {
         e.preventDefault()
-        const { title, author, you, need, go, search, find, take, returned, changed } = this.state.stories
-        axios.put('http://localhost:3001/story/update/' + this.props.match.params.id, {title, author, you, need, go, search, find, take, returned, changed})
-        .then(result => {
-            console.log(result)
-            this.props.history.push(result)
-        })
-        .catch(err => {
-            console.log(err)
-        })
+        // const { title, author, you, need, go, search, find, take, returned, changed } = this.state.stories
     }
-
+    
     render(){
         return(
             <div>
+                <h1>Editing Mode</h1>
                   <form onSubmit={this.onSubmit}>
 
 <div className="">

@@ -1,65 +1,37 @@
 import React, { Component } from "react";
-import axios from "axios";
+import {graphql, compose} from 'react-apollo'
+import createStory from '../../Queries/Queries'
 
 class Form extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      title: "",
-      author: "",
-      you: "",
-      need: "",
-      go: "",
-      search: "",
-      find: "",
-      take: "",
-      returned: "",
-      changed: ""
+      story: {}
     };
   }
 
   onChange = e => {
-    const storyState = this.state;
+    const storyState = this.state.story;
     storyState[e.target.name] = e.target.value;
+    console.log(storyState)
     this.setState(storyState);
   };
 
   onSubmit = e => {
     e.preventDefault();
-    const {
-      title,
-      author,
-      you,
-      need,
-      go,
-      search,
-      find,
-      take,
-      returned,
-      changed
-    } = this.state;
-    axios
-      .post("http://localhost:4000/story/api", {
-        title,
-        author,
-        you,
-        need,
-        go,
-        search,
-        find,
-        take,
-        returned,
-        changed
-      })
-      .then(result => {
-        console.log(result);
-        this.props.history.push("/");
-      });
+    console.log(this.state.story)
+    this.props.createStory({
+      variables: {
+        story: this.state.story
+      }
+    })
+
   };
+
   render() {
     return (
       <div className="card">
-      <h1>Write A Story</h1>
+        <h1>Write A Story</h1>
         <form onSubmit={this.onSubmit}>
           <div className="">
             <label htmlFor="title">Title</label>
@@ -69,6 +41,39 @@ class Form extends Component {
               onChange={this.onChange}
               name="title"
               placeholder="from"
+            />
+          </div>
+
+              <div className="">
+            <label htmlFor="author">Author</label>
+            <input
+              type="text"
+              id="author"
+              onChange={this.onChange}
+              name="author"
+              placeholder="Author"
+            />
+          </div>
+
+              <div className="">
+            <label htmlFor="tagline">Tagline</label>
+            <input
+              type="text"
+              id="tagline"
+              onChange={this.onChange}
+              name="tagline"
+              placeholder="tagline"
+            />
+          </div>
+
+          <div className="">
+            <label htmlFor="summary">Summary</label>
+            <input
+              type="text"
+              id="summary"
+              onChange={this.onChange}
+              name="summary"
+              placeholder="summary"
             />
           </div>
 
@@ -173,11 +178,13 @@ class Form extends Component {
             />
           </div>
 
-          <input type="submit" value="sendcard" />
+          <input type="submit" value="Write Story" />
         </form>
       </div>
     );
   }
 }
 
-export default Form;
+export default compose (
+  graphql(createStory, {name: "createStory"})
+)(Form);
