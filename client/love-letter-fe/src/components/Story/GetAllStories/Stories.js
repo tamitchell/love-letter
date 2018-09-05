@@ -1,7 +1,7 @@
 import React from "react";
 import StoryShow from "../StoryShow/StoryShow";
 import { Query } from 'react-apollo';
-import getStories from '../../Queries/Queries'
+import {getStories} from '../../Queries/Queries'
 
 function Stories({stories, getStoriesQuery}) {
     return(
@@ -20,12 +20,15 @@ function Stories({stories, getStoriesQuery}) {
 
 export default function StoriesHOC(props) {
     return(
-        <Query query={getStories}>
+        <Query 
+        query={getStories}>
         {({data}) => (
-            <Stories {...props} getStoriesQuery={getStories}
-            stories={(data && data.stories) || []}
+            <Stories {...props} 
+            getStoriesQuery={getStories}
+            stories={(data && data.stories) || {}}
             />
         )}
         </Query>
     )
+    
 }

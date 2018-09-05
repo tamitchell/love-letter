@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {getStories, updateStory} from '../../Queries/Queries'
+// import {getStories, updateStory} from '../../Queries/Queries'
 
 
 class Edit extends Component {

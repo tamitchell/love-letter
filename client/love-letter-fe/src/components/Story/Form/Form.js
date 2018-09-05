@@ -1,6 +1,7 @@
-import React, { Component } from "react";
-import {graphql, compose} from 'react-apollo'
-import createStory from '../../Queries/Queries'
+import React, { Component } from "react"
+import { withRouter } from 'react-router-dom'
+import  {graphql}  from 'react-apollo'
+import {createStory} from '../../Queries/Queries'
 
 class Form extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class Form extends Component {
   onChange = e => {
     const storyState = this.state.story;
     storyState[e.target.name] = e.target.value;
+    console.log(this.props.createStory)
     console.log(storyState)
     this.setState(storyState);
   };
@@ -25,7 +27,7 @@ class Form extends Component {
         story: this.state.story
       }
     })
-
+    this.props.history.replace('/')
   };
 
   render() {
@@ -185,6 +187,11 @@ class Form extends Component {
   }
 }
 
-export default compose (
-  graphql(createStory, {name: "createStory"})
-)(Form);
+
+// export default graphql(createStory, {name: 'createStory'})(Form)
+
+const createStoryMutation = graphql(createStory, {
+  name: 'createStory' // name of the injected prop: this.props.createStory...
+})(Form)
+
+export default withRouter(createStoryMutation)
