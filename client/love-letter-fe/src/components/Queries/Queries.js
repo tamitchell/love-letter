@@ -19,7 +19,7 @@ export const getStories = gql`
       changed
     }
   }
-`
+`;
 
 export const createStory = gql`
   mutation($title: String!, $author: String!) {
