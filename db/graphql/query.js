@@ -18,15 +18,6 @@ query getStories {
   }
 }
 
-mutation {
-	create(title: "The Bluest Eye", author: "Toni Morrison") {
-    id
-    title
-    author
-    summary
-  }
-}
-
 # Keyboard shortcuts:
 #
 #   Prettify Query:  Shift-Ctrl-P (or press the prettify button above)

@@ -22,8 +22,8 @@ export const getStories = gql`
 `;
 
 export const createStory = gql`
-  mutation($title: String!, $author: String!) {
-    create (title: $title, author: $author) {
+  mutation( $input: StoryInput!) {
+    create (input: $input) {
       id
       title
       author
@@ -40,7 +40,7 @@ export const createStory = gql`
       changed
     }
   }
-`
+`;
 export const updateStory = gql`
   mutation($id: ID!) {
     update(id: $id) {
@@ -60,4 +60,4 @@ export const updateStory = gql`
       changed
     }
   }
-`
+`;

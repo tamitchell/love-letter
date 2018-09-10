@@ -6,38 +6,26 @@ class Navigation extends Component {
   render() {
     return (
       <div>
-        <nav class="nav-extended">
-          <div class="nav-wrapper">
-            <a href="http://tamitchell.github.io/" class="brand-logo">
+        <nav className="nav-extended">
+          <div className="nav-wrapper">
+            <a href="http://tamitchell.github.io/" className="brand-logo">
               StoryTeller
             </a>
           </div>
-          <div class="nav-content">
-            <ul class="tabs tabs-transparent">
-              <li class="tab">
+          <div className="nav-content">
+            <ul className="tabs tabs-transparent">
+              <li className="tab">
                 <Link to="/">Home</Link>
               </li>
-              <li class="tab">
+              <li className="tab">
                 <Link to="/all_stories">View All Stories</Link>
               </li>
-              <li class="tab">
+              <li className="tab">
               <Link to="/story/create">Write A Story</Link>
               </li>
             </ul>
           </div>
         </nav>
-
-        <ul class="sidenav" id="mobile-demo">
-          <li>
-            <a href="sass.html">Sass</a>
-          </li>
-          <li>
-            <a href="badges.html">Components</a>
-          </li>
-          <li>
-            <a href="collapsible.html">JavaScript</a>
-          </li>
-        </ul>
       </div>
     );
   }

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import { graphql } from "react-apollo";
+import { graphql, Mutation } from "react-apollo";
 import { createStory } from "../../Queries/Queries";
 import "./Form.scss";
+
 
 class Form extends Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class Form extends Component {
       story: {}
     };
   }
+
 
   onChange = e => {
     const storyState = this.state.story;
@@ -22,7 +24,6 @@ class Form extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    console.log(this.state.story);
     this.props.createStory({
       variables: {
         story: this.state.story
@@ -30,6 +31,7 @@ class Form extends Component {
     });
     this.props.history.replace("/");
   };
+
 
   render() {
     return (
