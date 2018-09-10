@@ -10,7 +10,7 @@ export default function StoryShow({
       <h2>{tagline}</h2>
       <h3>{author}</h3>
       <p>{summary}</p>
-      <Link exact to={'/story/' + id}>Read More</Link>
+      <Link to={'/story/' + id}>Read More</Link>
 
     </div>
   )

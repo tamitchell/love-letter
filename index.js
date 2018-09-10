@@ -9,8 +9,8 @@ const setupGraphQL = require('./db/graphql')
 
 const app = express()
 
-app.use(parser.json())
 app.use(cors())
+app.use(parser.json())
 app.use(function(req, _, next) {
   req.data = data;
   return next()

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Home from "../Home/Home";
 import StoriesHOC from "../Story/GetAllStories/Stories";
 import Navigation from "../Navigation/Navigation";
@@ -11,7 +11,6 @@ import Form from "../Story/Form/Form";
 export default class App extends Component {
   render() {
     return (
-      <Router>
         <div>
           <Navigation />
           <Switch>
@@ -35,7 +34,6 @@ export default class App extends Component {
             <Route exact path="/about" />
           </Switch>
         </div>
-      </Router>
     );
   }
 }

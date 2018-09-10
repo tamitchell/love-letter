@@ -1,6 +1,6 @@
 import React from "react";
 import StoryShow from "../StoryShow/StoryShow";
-import { Query, Fetching, Error } from "react-apollo";
+import { Query } from "react-apollo";
 import { getStories } from "../../Queries/Queries";
 
 function Stories({ stories, getStoriesQuery }) {
@@ -25,13 +25,13 @@ function Stories({ stories, getStoriesQuery }) {
 export default function StoriesHOC(props) {
   return (
     <Query query={getStories}>
-      {({ loading, error, data }) => {
-          console.log(data)
-      if (error) return <Error />
-      if (loading || !data) return <Fetching />
-
-      return <Stories {...props} getStoriesQuery={getStories} stories={(data && data.stories) || []}/>
-    }}
+      {({ data }) => (
+        <Stories
+          {...props}
+          getStoriesQuery={getStories}
+          stories={(data && data.stories) || []} // eslint-disable-line no-mixed-operators
+        />
+      )}
     </Query>
   );
 }

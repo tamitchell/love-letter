@@ -78,7 +78,7 @@ const storyType = new GraphQLObjectType({
 
 const getStories = {
   type: new GraphQLList(storyType),
-  resolve(_, args, ctx) {
+  resolve(_, args) {
     return Story.find({});
   }
 };
