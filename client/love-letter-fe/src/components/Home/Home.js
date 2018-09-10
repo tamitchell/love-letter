@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom'
 import moon from '../../img/moon.png'
 import fox from '../../img/fox.png'
-import './Home.css'
+import './Home.scss'
 
 class Home extends Component {
     render(){
