@@ -9,6 +9,7 @@ import User from '../User/User'
 import Form from '../Form/Form'
 import Stories from '../Stories/Stories'
 import Navigation from '../Navigation/Navigation'
+import Edit from '../Edit/Edit'
 
 const signupURL = 'http://localhost:4000/user/signup'
 const loginURL = 'http://localhost:4000/user/login'
@@ -100,6 +101,11 @@ render() {
     <Route exact path='/user/:id/profile' render={() => {
       return(
         <User />
+      )
+    }}/>
+    <Route exact path='/story/edit/:id' render={() => {
+      return(
+        <Edit />
       )
     }}/>
     <Route exact path='/story/create' component={Form}/>
