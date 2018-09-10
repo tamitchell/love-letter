@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { graphql } from "react-apollo";
 import { createStory } from "../../Queries/Queries";
-import "./Form.css";
+import "./Form.scss";
 
 class Form extends Component {
   constructor(props) {
@@ -33,9 +33,9 @@ class Form extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="">
         <h1>Write A Story</h1>
-        <form onSubmit={this.onSubmit}>
+        <form class="form" onSubmit={this.onSubmit}>
           {/* Title Brick */}
           <div class="row">
             <div class="col s12">
