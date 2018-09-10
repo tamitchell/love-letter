@@ -8,7 +8,7 @@ class Navigation extends Component {
       <div>
         <nav class="nav-extended">
           <div class="nav-wrapper">
-            <a href="#" class="brand-logo">
+            <a href="http://tamitchell.github.io/" class="brand-logo">
               StoryTeller
             </a>
           </div>

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom'
-import moon from '../../img/moon.png'
 import fox from '../../img/fox.png'
 import './Home.scss'
 
@@ -9,7 +8,6 @@ class Home extends Component {
         return(
             <div className="hero-container">
                 <div className="moon"></div>
-                {/* <img src={moon} alt="moon" className="moon" /> */}
                 <img src={fox} alt="fox" className="fox" />
 
                 <Link to="/story/create"><button className="craft-story-btn">Craft Your Story</button></Link>

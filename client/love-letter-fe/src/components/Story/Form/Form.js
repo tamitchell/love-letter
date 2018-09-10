@@ -37,10 +37,10 @@ class Form extends Component {
         <h1>Write A Story</h1>
         <form className="form" onSubmit={this.onSubmit}>
           {/* Title Brick */}
-          <div className="row">
-            <div className="col s6 m6 l6">
+          <div className="row header-row">
+            <div className="col s12 m6 l6">
               Title:
-              <p className="input-field inline">
+              <p className="input-field">
                 <input
                   id="title"
                   type="text"
@@ -61,9 +61,9 @@ class Form extends Component {
 
             {/* Author Brick */}
 
-            <div className="col s6 m6 l6">
+            <div className="col s12 m6 l6">
               Author:
-              <p className="input-field inline">
+              <p className="input-field">
                 <input
                   type="text"
                   id="author"
@@ -81,13 +81,12 @@ class Form extends Component {
                 </span>
               </p>
             </div>
-          </div>
 
-          {/* Tagline Brick */}
-          <div className="row">
+            {/* Tagline Brick */}
+
             <div className="col s12 m12 l12">
               Tagline:
-              <p className="input-field inline">
+              <p className="">
                 <input
                   type="text"
                   id="tagline"
@@ -99,10 +98,10 @@ class Form extends Component {
               </p>
             </div>
           </div>
+
           {/* Summary Brick */}
           <div className="row">
             <div className="col s12 l12">
-
               <div className="card orange accent-3 col s12 m5 l5">
                 <div className="card-content">
                   <span className="card-title activator grey-text text-darken-4">
@@ -111,10 +110,9 @@ class Form extends Component {
                   </span>
                 </div>
                 <div className="card-reveal orange accent-3">
-                  <span className="card-title grey-text text-darken-4">
-                    Summarize Your Story
-                    <i className="material-icons right">close</i>
-                  </span>
+                  <span class="card-title grey-text text-darken-4">
+                    <i class="material-icons right">close</i>
+                  </span>{" "}
                   <p>
                     Here is some more information about this product that is
                     only revealed once clicked on.
@@ -136,17 +134,15 @@ class Form extends Component {
           {/* You Brick */}
           <div className="row">
             <div className="col s12">
-
-               <div class="card orange accent-3 col s12 m5 l5">
+              <div class="card orange accent-3 col s12 m5 l5">
                 <div class="card-content">
                   <span class="card-title activator grey-text text-darken-4">
-                  Establish a Protagonist
+                    Establish a Protagonist
                     <i class="material-icons right">more_vert</i>
                   </span>
                 </div>
                 <div class="card-reveal orange accent-3">
                   <span class="card-title grey-text text-darken-4">
-                  Establish a Protagonist
                     <i class="material-icons right">close</i>
                   </span>
                   <p>
@@ -172,8 +168,7 @@ class Form extends Component {
           {/* Need Brick */}
           <div className="row">
             <div className="col s12">
-              
-            <div className="card orange accent-3 col s12 m5 l5">
+              <div className="card orange accent-3 col s12 m5 l5">
                 <div className="card-content">
                   <span className="card-title activator grey-text text-darken-4">
                     Somethin' Aint Quite Right
@@ -182,7 +177,7 @@ class Form extends Component {
                 </div>
                 <div className="card-reveal orange accent-3">
                   <span className="card-title grey-text text-darken-4">
-                  Somethin' Aint Quite Right
+                    Somethin' Aint Quite Right
                     <i className="material-icons right">close</i>
                   </span>
                   <p>
@@ -206,8 +201,6 @@ class Form extends Component {
           {/* Go Brick */}
           <div className="row">
             <div className="col s12">
-
-
               <div className="card  orange accent-3 col s12 m5 l5">
                 <div className="card-content">
                   <span className="card-title activator grey-text text-darken-4">
@@ -241,8 +234,7 @@ class Form extends Component {
           {/* Search Brick */}
           <div className="row">
             <div className="col s12">
-
-                     <div className="card orange accent-3 col s12 m5 l5">
+              <div className="card orange accent-3 col s12 m5 l5">
                 <div className="card-content">
                   <span className="card-title activator grey-text text-darken-4">
                     The Road of Trials
@@ -277,8 +269,7 @@ class Form extends Component {
           {/* Find Brick */}
           <div className="row">
             <div className="col s12">
-
-                       <div className="card orange accent-3 col s12 m5 l5">
+              <div className="card orange accent-3 col s12 m5 l5">
                 <div className="card-content">
                   <span className="card-title activator grey-text text-darken-4">
                     Meeting the Goddess
@@ -313,7 +304,7 @@ class Form extends Component {
           {/* Take Brick */}
           <div className="row">
             <div className="col s12">
-            <div className="card orange accent-3 col s12 m5 l5">
+              <div className="card orange accent-3 col s12 m5 l5">
                 <div className="card-content">
                   <span className="card-title activator grey-text text-darken-4">
                     Meet Your Maker
@@ -345,8 +336,7 @@ class Form extends Component {
           {/* Return Brick */}
           <div className="row">
             <div className="col s12">
-
-       <div className="card orange accent-3 col s12 m5 l5">
+              <div className="card orange accent-3 col s12 m5 l5">
                 <div className="card-content">
                   <span className="card-title activator grey-text text-darken-4">
                     Bringing It Home
@@ -381,7 +371,7 @@ class Form extends Component {
           {/* Change Brick */}
           <div className="row">
             <div className="col s12">
-            <div className="card orange accent-3 col s12 m5 l5">
+              <div className="card orange accent-3 col s12 m5 l5">
                 <div className="card-content">
                   <span className="card-title activator grey-text text-darken-4">
                     Master of Both Worlds
@@ -414,7 +404,9 @@ class Form extends Component {
           </div>
 
           {/* Submit Button */}
-          <button class="waves-effect waves-light btn-large" type="submit">Publish</button>
+          <button class="waves-effect waves-light btn-large" type="submit">
+            Publish
+          </button>
         </form>
       </div>
     );

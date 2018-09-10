@@ -1,40 +1,98 @@
-
-
-.form-container {
-  border: 1px solid yellow;
-  display:flex;
+@mixin flexbox {
+  display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  width: 100%;
 }
 
-form {
-    border: 2px solid red;
-    width:100%;
+.form-container {
+  @include flexbox();
+  border: 1px solid yellow;
+  width: 100%;
+  form {
+    width: 100%;
     padding: 0.5em;
+    .row {
+      height: 25vh;
+      min-height: 50vh;
+      max-height: 100%;
+      padding: 0;
+      .col {
+        padding: 0;
+        height: 100%;
+        .card {
+          border-radius: 0;
+          margin: 0;
+          height: 50%;
+        }
+
+        .input-field {
+          margin: 0;
+          height: 50%;
+          textarea {
+            background-color: white;
+            border: none;
+            padding: 1em;
+            height: 100%;
+          }
+          label {
+            display: none;
+          }
+        }
+      }
+    }
+    .header-row {
+      border: 5px solid orange;
+      height: 25vh;
+      min-height: 45vh;
+      padding: 2em;
+      .col {
+        height: 10vh;
+        padding: 1em;
+      }
+    }
+  }
 }
 
-label {
-  display: none;
-}
-
-.row {
-  border: 1px solid pink;
-  padding: 0;
-  margin: 0;
-}
-
-.card {
-  border: 1px solid rgb(115, 255, 0);
-}
-
-.input-field {
-  border: 1px solid blue;
-  width: 100%;
-  height: 100%;
-}
-
-#title, #author, #tagline {
+#title,
+#author,
+#tagline {
   height: 1em;
+}
+
+@media only screen and (min-width: 600px) {
+  .form-container {
+    form {
+      .row {
+        height: 25vh;
+        min-height: 25vh;
+        max-height: 100%;
+        .col {
+          padding: 0;
+          height: 100%;
+          .card {
+            border-radius: 0;
+            margin: 0;
+            height: 100%;
+          }
+          .input-field {
+            margin: 0;
+            height: 100%;
+          }
+        }
+      }
+      .header-row {
+        height: 40vh;
+        min-height: 40vh;
+        @include flexbox();
+        flex-flow: row wrap;
+        .col {
+          height: 12vh;
+          margin: 0.5em;
+          padding: 1em;
+          max-width: 35vw;
+        }
+      }
+    }
+  }
 }
