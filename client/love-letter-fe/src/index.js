@@ -2,7 +2,7 @@ import React from "react";
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
 import { render } from "react-dom";
-import "./index.css";
+import "./index.scss";
 import App from "./components/App/App";
 import { BrowserRouter as Router } from "react-router-dom";
 import 'materialize-css/dist/css/materialize.min.css'
