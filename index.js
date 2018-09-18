@@ -5,10 +5,14 @@ const passport = require('./config/passport')()
 
 
 const app = express()
+var corsOptions = {
+  origin: "*",
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
 
 app.set('port', process.env.PORT || 4000)
+app.use(cors(corsOptions));
 app.use(parser.json())
-app.use(cors())
 app.use(passport.initialize())
 
 

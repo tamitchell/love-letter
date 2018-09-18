@@ -1,5 +1,5 @@
 {
-  "name": "love-letter",
+  "name": "storyteller",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tamitchell/love-letter.git"
+    "url": "git+https://github.com/tamitchell/storyteller.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tamitchell/love-letter/issues"
+    "url": "https://github.com/tamitchell/storyteller/issues"
   },
   "homepage": "https://github.com/tamitchell/love-letter#readme",
   "dependencies": {

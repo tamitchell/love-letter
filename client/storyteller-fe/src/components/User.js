@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Link,
-  Route,
-  Switch
-} from 'react-router-dom'
+
 
 class User extends Component {
   constructor(){

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Navbar, NavItem } from "react-materialize";
 import { Link } from "react-router-dom";
 
 class Navigation extends Component {
@@ -16,9 +15,6 @@ class Navigation extends Component {
       <div>
         <nav>
           <div className="nav-wrapper">
-            <a href="#" className="brand-logo center">
-              Logo
-            </a>
             <ul id="nav-mobile" className="left hide-on-med-and-down">
               <li>
                 <Link to="/">Home</Link>
