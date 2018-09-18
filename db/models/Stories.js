@@ -2,10 +2,15 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const Story = new Schema({
-  title: String,
+  title: {
+    type: String,
+    required: true
+  },
   tagline: String,
   summary: String,
-  author: String,
+  author: {
+    type: String,
+    requried: true },
   rating: Number,
   you: String,
   need: String,
@@ -15,6 +20,12 @@ const Story = new Schema({
   take: String,
   returned: String,
   changed: String,
+  comments: [
+    {
+      types: Schema.Types.ObjectId,
+      ref: 'Comment'
+    }
+  ],
   created_at: {
     type: Date,
     default: Date.now()
