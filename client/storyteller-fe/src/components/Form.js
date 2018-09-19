@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import axios from "axios";
+import firebase from '../firebase.js';
 
 class Form extends Component {
   constructor() {
     super();
     this.state = {
       title: "",
+      tagline: "",
+      summary: "",
       author: "",
       you: "",
       need: "",
@@ -22,39 +24,26 @@ class Form extends Component {
     const storyState = this.state;
     storyState[e.target.name] = e.target.value;
     this.setState(storyState);
+    console.log(storyState)
   };
 
   onSubmit = e => {
     e.preventDefault();
-    const {
-      title,
-      author,
-      you,
-      need,
-      go,
-      search,
-      find,
-      take,
-      returned,
-      changed
-    } = this.state;
-    axios
-      .post("http://localhost:4000/story/api", {
-        title,
-        author,
-        you,
-        need,
-        go,
-        search,
-        find,
-        take,
-        returned,
-        changed
-      })
-      .then(result => {
-        console.log(result);
-        this.props.history.push("/");
-      });
+    const itemsRef = firebase.database().ref('items');
+    const item = {
+      title: this.state.title,
+      tagline: this.state.tagline,
+      summary: this.state.summary,
+      you: this.state.you,
+      need: this.state.need,
+      go: this.state.go,
+      search: this.state.search,
+      find: this.state.find,
+      take: this.state.take,
+      returned: this.state.returned,
+      changed: this.state.changed,
+    }
+    itemsRef.push(item);
   };
   render() {
     return (
