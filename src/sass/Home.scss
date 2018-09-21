@@ -10,8 +10,8 @@
     height: 80vh;
     padding: 2em;
     .modal-btn {
-        display: block;
-        margin: 20vh auto 0 auto;
+      display: block;
+      margin: 10vh auto 0 auto;
       background: transparent;
       border: none;
       .moon {
@@ -19,18 +19,49 @@
         display: block;
         margin: 0 auto;
         width: 50vw;
-        max-width: 600px;
+        max-width: 400px;
         min-width: 350px;
         height: 50vw;
-        max-height: 600px;
+        max-height: 400px;
         min-height: 350px;
         border-radius: 50%;
-        background-color: #F7DBA0;
+        background-color: $moon;
         border: none;
         box-shadow: 15px 5px 5px rgba($color: #060a16, $alpha: 0.5);
         &:hover {
           cursor: pointer;
-          animation: float 2s ease-in-out infinite;
+        }
+        &::after {
+          width: 60vw;
+          max-width: 500px;
+          min-width: 450px;
+          height: 60vw;
+          max-height: 500px;
+          min-height: 450px;
+          border-radius: 50%;
+          z-index: -1;
+          background-color: rgba($color: $moon, $alpha: 0.5);
+          position: absolute;
+          content: "";
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        &::before {
+          width: 80vw;
+          max-width: 600px;
+          min-width: 550px;
+          height: 80vw;
+          max-height: 600px;
+          min-height: 550px;
+          border-radius: 50%;
+          z-index: -1;
+          background-color: rgba($color: $moon, $alpha: 0.2);
+          position: absolute;
+          content: "";
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
         }
         img {
           position: absolute;
@@ -39,7 +70,7 @@
           transform: translate(-50%, -50%);
           width: 50vw;
           min-width: 300px;
-          max-width: 500px;
+          max-width: 400px;
         }
       }
     }

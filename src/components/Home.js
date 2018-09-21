@@ -17,11 +17,10 @@ const Home = () => {
               </Button>
             }
           >
-          <section>
               <p>Hi</p>
-          </section>
           </Modal>
         </section>
+        
       </Col>
     </Row>
   );
