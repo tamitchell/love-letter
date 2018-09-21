@@ -6,14 +6,10 @@ import Signup from "./Signup";
 import Login from "./Login";
 import User from "./User";
 import Form from "./Form";
-import Stories from "./Stories";
+import StoriesList from "./StoriesList";
 import Navigation from "./Navigation";
 import Edit from "./Edit";
-
-// const signupURL = "http://localhost:4000/user/signup";
-// const loginURL = "http://localhost:4000/user/login";
-// const storiesAPI = "http://localhost:4000/story/api";
-// const proxyurl = "https://agile-journey-28298.herokuapp.com/";
+import StoryItem from "./StoryShow.js";
 
 class App extends Component {
   constructor(props) {
@@ -29,19 +25,28 @@ class App extends Component {
   componentDidMount() {
     const itemsRef = firebase.database().ref("items");
     itemsRef.on("value", snapshot => {
-      let items = snapshot.val();
-      let newState = [];
-      for (let item in items) {
-        newState.push({
-          title: items[item].title,
-          tagline: items[item].tagline
+      let storiesArr = snapshot.val();
+      let fetchedStories = [];
+      for (let item in storiesArr) {
+        fetchedStories.push({
+          key: item,
+          title: storiesArr[item].title,
+          tagline: storiesArr[item].tagline,
+          summary: storiesArr[item].summary,
+          you: storiesArr[item].you,
+          need: storiesArr[item].need,
+          go: storiesArr[item].go,
+          search: storiesArr[item].search,
+          find: storiesArr[item].find,
+          take: storiesArr[item].take,
+          returned: storiesArr[item].returned,
+          changed: storiesArr[item].changed
         });
       }
       this.setState({
-        stories: newState
+        stories: fetchedStories
       });
     });
-    console.log(this.state.stories)
   }
 
   handleInput = e => {
@@ -131,8 +136,8 @@ class App extends Component {
           <Route
             exact
             path="/story/edit/:id"
-            render={() => {
-              return <Edit />;
+            render={(props) => {
+              return <Edit {...props}/>;
             }}
           />
           <Route
@@ -144,9 +149,16 @@ class App extends Component {
           />
           <Route
             exact
+            path="/story/:id/view"
+            render={(props) => {
+              return <StoryItem {...props}/>;
+            }}
+          />
+          <Route
+            exact
             path="/all_stories"
             render={props => {
-              return <Stories stories={this.state.stories} />;
+              return <StoriesList editStory={this.editStory} stories={this.state.stories} />;
             }}
           />
         </Switch>

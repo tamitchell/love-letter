@@ -8,7 +8,6 @@ class Form extends Component {
       title: "",
       tagline: "",
       summary: "",
-      author: "",
       you: "",
       need: "",
       go: "",
