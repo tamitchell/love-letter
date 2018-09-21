@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import firebase from "../firebase.js";
 
 class StoryItem extends Component {
   constructor(props) {

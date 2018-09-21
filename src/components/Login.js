@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import axios from 'axios'
 
 class Login extends Component {
     constructor(props){
@@ -18,15 +17,6 @@ class Login extends Component {
 
     handleLogIn(e) {
         e.preventDefault()
-        axios.post('http://localhost:4000/user/login', {
-          username: this.state.username,
-          password: this.state.password
-        })
-        .then(response => {
-          localStorage.token = response.data.token
-          this.setState({isLoggedIn: true})
-        })
-        .catch(err => console.log(err))
       }
 
     render(){

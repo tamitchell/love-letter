@@ -10,7 +10,7 @@ import StoriesList from "./StoriesList";
 import Navigation from "./Navigation";
 import Edit from "./Edit";
 import StoryItem from "./StoryShow.js";
-
+import '../sass/App.scss'
 class App extends Component {
   constructor(props) {
     super(props);
@@ -52,12 +52,10 @@ class App extends Component {
   handleInput = e => {
     const userState = this.state;
     userState[e.target.name] = e.target.value;
-    console.log(userState);
     this.setState(userState);
   };
 
   handleSignUp = e => {
-    console.log(this.state);
     e.preventDefault();
     // axios
     //   .post(signupURL, {
