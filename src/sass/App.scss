@@ -1,4 +1,7 @@
 @import './variables';
+@import './Navigation.scss';
+@import './Home.scss';
+@import './mixins.scss';
 
 body {
     background-color: $background;

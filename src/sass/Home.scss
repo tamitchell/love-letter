@@ -1,0 +1,47 @@
+@import "./variables.scss";
+@import "./animation.scss";
+
+.home-component {
+  height: 80vh;
+  margin: 0;
+  padding: 0;
+  section {
+    position: relative;
+    height: 80vh;
+    padding: 2em;
+    .modal-btn {
+        display: block;
+        margin: 20vh auto 0 auto;
+      background: transparent;
+      border: none;
+      .moon {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        width: 50vw;
+        max-width: 600px;
+        min-width: 350px;
+        height: 50vw;
+        max-height: 600px;
+        min-height: 350px;
+        border-radius: 50%;
+        background-color: #F7DBA0;
+        border: none;
+        box-shadow: 15px 5px 5px rgba($color: #060a16, $alpha: 0.5);
+        &:hover {
+          cursor: pointer;
+          animation: float 2s ease-in-out infinite;
+        }
+        img {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 50vw;
+          min-width: 300px;
+          max-width: 500px;
+        }
+      }
+    }
+  }
+}
