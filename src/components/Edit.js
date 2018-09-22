@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Toast, Card, CardTitle, Row, Col, Input } from "react-materialize";
+import { Toast, Modal, Button } from "react-materialize";
 import firebase from "../firebase.js";
 import { defaultinfo } from "./info.js";
 class Edit extends Component {
@@ -10,9 +10,9 @@ class Edit extends Component {
     };
   }
 
-  editStory = (id) => {
+  editStory = id => {
     const ref = firebase.database().ref("items");
-    ref.child(id).update(this.state.story)
+    ref.child(id).update(this.state.story);
   };
 
   componentDidMount = async () => {
@@ -138,7 +138,7 @@ class Edit extends Component {
               </p>
             </div>
           </div>
-          
+
           {/* Summary Brick */}
 
           <DisplayRow story={story} name={"Summary"} />
@@ -165,6 +165,23 @@ class Edit extends Component {
           <Toast type="submit" toast="STORY UPDATED!">
             UPDATE
           </Toast>
+
+          <Modal
+            header="Are you sure?"
+            className="delete-modal"
+            trigger={
+              <Button waves="light">
+                Delete
+              </Button>
+            }
+          >
+            <p>
+              This will permanently delete your story. There's no going back!
+            <Button onClick={e => this.handleDelete(e)}>
+              Yes, delete my story forever.
+              </Button> 
+            </p>
+          </Modal>
         </form>
       </div>
     );
@@ -173,7 +190,7 @@ class Edit extends Component {
 
 // Pass color string and get a start with that color fill
 function DisplayRow(props) {
-  let field = props.name.toLowerCase()
+  let field = props.name.toLowerCase();
   let story = props.story;
   if (!story || !Object.getOwnPropertyNames(story).length) {
     return <div>Loading...</div>;
