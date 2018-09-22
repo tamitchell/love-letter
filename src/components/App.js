@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
-import firebase from '../firebase.js';
+import firebase from "../firebase.js";
 import Home from "./Home";
 import Signup from "./Signup";
 import Login from "./Login";
@@ -10,7 +10,8 @@ import StoriesList from "./StoriesList";
 import Navigation from "./Navigation";
 import Edit from "./Edit";
 import StoryItem from "./StoryShow.js";
-import '../sass/App.scss'
+import About from './About'
+import "../sass/App.scss";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -95,7 +96,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navigation isLoggedIn={this.state.isLoggedIn} />
+        <Navigation />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route
@@ -132,31 +133,38 @@ class App extends Component {
             }}
           />
           <Route
-            exact
             path="/story/edit/:id"
             render={(props) => {
-              return <Edit {...props}/>;
+              return <Edit {...props} />;
             }}
           />
           <Route
-            exact
             path="/story/create"
-            render={() => {
-              return <Form />;
-            }}
+            component={Form}
           />
           <Route
-            exact
             path="/story/:id/view"
             render={(props) => {
-              return <StoryItem {...props}/>;
+              return <StoryItem {...props} />;
+            }}
+          />
+          <Route
+            path="/all_stories"
+            render={(props) => {
+              return (
+                <StoriesList
+                  {...props}
+                  editStory={this.editStory}
+                  stories={this.state.stories}
+                />
+              );
             }}
           />
           <Route
             exact
-            path="/all_stories"
-            render={props => {
-              return <StoriesList editStory={this.editStory} stories={this.state.stories} />;
+            path="/about"
+            render={()=> {
+              return <About />;
             }}
           />
         </Switch>

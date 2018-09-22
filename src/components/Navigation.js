@@ -1,29 +1,27 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Navbar, NavItem } from "react-materialize";
+import {Link} from "react-router-dom";
+import {Row, Col} from 'react-materialize'
 
-export default function Navigation() {
+const Navigation = () => {
   return (
-      <nav>
-        <div className="nav-wrapper">
-          <ul className="left hide-on-med-and-down">
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/all_stories">View All Stories</Link>
-            </li>
-            <li>
-              <Link to="/story/create">Write A Story</Link>
-            </li>
-
-          </ul>
-        </div>
-      </nav>
+    <nav className="nav-extended">
+    <div className="nav-wrapper">
+      <a href="https://tamitchell.github.io/" class="brand-logo">Logo</a>
+    </div>
+    <div class="nav-content">
+      <ul class="tabs tabs-transparent">
+        <li class="tab"><Link to="/">Home</Link></li>
+        <li class="tab"><Link to="/all_stories">All Stories</Link></li>
+        <li class="tab"><Link to="/story/create">Write A Story</Link></li>
+        <li class="tab"><Link to="/user/:id/profile">Profile</Link></li>
+      </ul>
+    </div>
+  </nav>
   );
 }
 
-{
+export default Navigation
+
   /* {this.props.isLoggedIn ? (
                     <div>
                       <li>
@@ -44,4 +42,4 @@ export default function Navigation() {
                       </li>
                     </div>
                   )} */
-}
+
