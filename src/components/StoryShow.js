@@ -24,9 +24,9 @@ class StoryItem extends Component {
     const story = this.state.story;
     return (
       <div>
-        <h1>Whole Story</h1>
-        <p>{story.title}</p>
+        <h5>{story.title}</h5>
         <p>{story.author}</p>
+        <p>{story.summary}</p>
         <p>{story.you}</p>
         <p>{story.need}</p>
         <p>{story.go}</p>
@@ -36,8 +36,7 @@ class StoryItem extends Component {
         <p>{story.return}</p>
         <p>{story.changed}</p>
         <Link to={{
-          pathname: `/story/edit/${story.key}`,
-          myCustomProps: {story}
+          pathname: `/story/edit/${this.props.match.params.id}`
           }}>
             <button type="submit">Edit</button>
         </Link>

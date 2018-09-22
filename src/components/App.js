@@ -33,7 +33,6 @@ class App extends Component {
           key: item,
           title: storiesArr[item].title,
           author: storiesArr[item].author,
-          tagline: storiesArr[item].tagline,
           summary: storiesArr[item].summary,
           you: storiesArr[item].you,
           need: storiesArr[item].need,
