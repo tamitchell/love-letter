@@ -3,3 +3,10 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+@mixin flexbox {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}

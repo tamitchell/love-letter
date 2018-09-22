@@ -1,0 +1,99 @@
+@import "./mixins.scss";
+
+.form-container {
+  @include flexbox();
+  border: 1px solid yellow;
+  width: 100%;
+  form {
+    width: 100%;
+    padding: 0.5em;
+    .row {
+      height: 25vh;
+      min-height: 50vh;
+      max-height: 100%;
+      padding: 0;
+      .col {
+        padding: 0;
+        height: 100%;
+        .card {
+          border-radius: 0;
+          margin: 0;
+          height: 50%;
+        }
+
+        .input-field {
+          margin: 0;
+          height: 50%;
+          textarea {
+            background-color: white;
+            border: none;
+            padding: 1em;
+            height: 100%;
+          }
+          label {
+            display: none;
+          }
+        }
+      }
+    }
+    .header-row {
+      border: 5px solid orange;
+      height: auto;
+      min-height: 70vh;
+      padding: 2em;
+      color: white;
+      .col {
+        height: 10vh;
+        padding: 1em;
+        input[type=file] {
+            margin-top: 0.5em;
+        }
+      }
+    }
+  }
+}
+
+#title,
+#author,
+#tagline {
+  height: 1em;
+}
+
+@media only screen and (min-width: 600px) {
+  .form-container {
+    form {
+      .row {
+        height: 25vh;
+        min-height: 25vh;
+        max-height: 100%;
+        .col {
+          padding: 0;
+          height: 100%;
+          .card {
+            border-radius: 0;
+            margin: 0;
+            height: 100%;
+          }
+          .input-field {
+            margin: 0;
+            height: 100%;
+          }
+        }
+      }
+      .header-row {
+        height: auto;
+        padding: 2em;
+        // min-height: 90vh;
+        @include flexbox();
+        flex-flow: row wrap;
+        .col {
+          height: 12vh;
+          margin: 0.5em;
+          padding: 1em;
+          max-width: 35vw;
+        }
+    }
+}
+}
+}
+                            

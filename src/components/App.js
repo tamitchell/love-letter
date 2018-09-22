@@ -32,6 +32,7 @@ class App extends Component {
         fetchedStories.push({
           key: item,
           title: storiesArr[item].title,
+          author: storiesArr[item].author,
           tagline: storiesArr[item].tagline,
           summary: storiesArr[item].summary,
           you: storiesArr[item].you,
@@ -41,7 +42,9 @@ class App extends Component {
           find: storiesArr[item].find,
           take: storiesArr[item].take,
           returned: storiesArr[item].returned,
-          changed: storiesArr[item].changed
+          changed: storiesArr[item].changed,
+          imgpath: storiesArr[item].imgpath,
+          genre: storiesArr[item].genre
         });
       }
       this.setState({
@@ -98,7 +101,7 @@ class App extends Component {
       <div>
         <Navigation />
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" render={Home} />
           <Route
             exact
             path="/signup"

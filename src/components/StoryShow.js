@@ -1,23 +1,27 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import firebase from "../firebase.js";
 
 class StoryItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      story: this.props.location.myCustomProps
+      story: {}
     };
   }
   componentDidMount() {
-    //this should do a fetch request based on the 
-    //params id to get the specific item in the firebase
-    //right now it is being passed as prop which is unreliable
-
-    //user should be able to access content 
-    //without having to go to previous page
+   const ref = firebase.database().ref("items");
+      ref
+      .child(this.props.match.params.id)
+      .once("value")
+      .then(snapshot => this.setState({story: snapshot.val()}))
+      .catch(error => ({
+         errorCode: error.code,
+         errorMessage: error.message
+       }));
   }
   render() {
-    const story = this.state.story.story;
+    const story = this.state.story;
     return (
       <div>
         <h1>Whole Story</h1>
@@ -35,9 +39,7 @@ class StoryItem extends Component {
           pathname: `/story/edit/${story.key}`,
           myCustomProps: {story}
           }}>
-          <form>
             <button type="submit">Edit</button>
-          </form>
         </Link>
       </div>
     );

@@ -7,22 +7,26 @@ export default function StoriesList (props) {
   let story
   if (props.stories != null || undefined) {
     story =  props.stories.map((story, i) => {
+      console.log(story.imgpath)
       return (
-        <Row key={i}>
-          <h1>{story.title}</h1>
-          <p>{story.key}</p>
-          <p>{story.author}</p>
-          <p>{story.tagline}</p>
+        <Row key={i} className="storylist-item">
+          <Col className="img-box" s={12} m={5} l={3}>
+          <img src={story.imgpath} alt="story-img"/>
+          </Col>
+          <Col
+           s={12} m={7} l={9} 
+          className="text-box">
+          <h6>{story.title}</h6>
+          <p>by {story.author}</p>
           <p>{story.summary}</p>
-          <p>{story.you}</p>
-
           <Link to={{ 
             pathname: `/story/${story.key}/view`, 
-            myCustomProps: {story}}}>
-          <form>
+            myCustomProps: {story},
+            storyKey: story.key}}>
             <button type="button">Read More</button>
-          </form>
         </Link>
+            <p>Genre: {story.genre}</p>
+          </Col>
         </Row>
       );
     });
@@ -30,9 +34,12 @@ export default function StoriesList (props) {
       story = <div className="container">No results found</div>
   }
   return(
-    <div>
-      <h1>Story Show Page</h1>
-      {story}
-    </div>
+    <Row className="storylist-component" >
+      <Col s={12} m={8} l={9}><h5>Stories</h5>
+      
+      <Col s={12} m={12} l={12}>{story}</Col>
+      </Col>
+      <Col s={12} m={4} l={3}><h5>Last Updated</h5></Col>
+    </Row>
   )
 }
