@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
-import firebase from "../firebase.js";
+import firebase, { auth, provider } from "../firebase.js";
 import Home from "./Home";
-import Signup from "./Signup";
 import Login from "./Login";
 import User from "./User";
 import Form from "./Form";
@@ -10,16 +9,14 @@ import StoriesList from "./StoriesList";
 import Navigation from "./Navigation";
 import Edit from "./Edit";
 import StoryItem from "./StoryShow.js";
-import About from './About'
+import About from "./About";
 import "../sass/App.scss";
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      password: "",
-      stories: [],
-      isLoggedIn: false
+      isLoggedIn: null,
+      stories: []
     };
   }
 
@@ -50,6 +47,11 @@ class App extends Component {
         stories: fetchedStories
       });
     });
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({isLoggedIn: user.I})
+      } 
+    });
   }
 
   handleInput = e => {
@@ -58,62 +60,37 @@ class App extends Component {
     this.setState(userState);
   };
 
-  handleSignUp = e => {
+  handleLogIn = (e) => {
     e.preventDefault();
-    // axios
-    //   .post(signupURL, {
-    //     username: this.state.username,
-    //     password: this.state.password
-    //   })
-    //   .then(response => {
-    //     localStorage.token = response.data.token;
-    //     // this.props.history.push("/profile");
-    //   })
-    //   .catch(err => console.log(err));
+    auth.signInWithPopup(provider)
+    .then((result) => {
+      const isLoggedIn = result.user.I;
+      this.setState({
+        isLoggedIn: isLoggedIn
+      });
+    });
+  }
+
+  handleLogOut = () => {
+    auth.signOut()
+    .then(() => {
+      this.setState({
+        isLoggedIn: null
+      });
+    });
   };
 
-  handleLogIn(e) {
-    e.preventDefault();
-    // axios
-    //   .post(loginURL, {
-    //     username: this.state.username,
-    //     password: this.state.password
-    //   })
-    //   .then(res => {
-    //     localStorage.token = res.data.token;
-    //     this.setState({ isLoggedIn: true });
-    //   })
-    //   .catch(err => console.log(err));
-  }
-
-  handleLogOut() {
-    this.setState({
-      username: "",
-      password: "",
-      isLoggedIn: false
-    });
-    localStorage.clear();
-  }
-
-  render() {
+  render(props) {
     return (
       <div>
-        <Navigation />
+        <Navigation
+          {...props}
+          isLoggedIn={this.state.isLoggedIn}
+          handleLogIn={this.handleLogIn}
+          handleLogOut={this.handleLogOut}
+        />
         <Switch>
           <Route exact path="/" render={Home} />
-          <Route
-            exact
-            path="/signup"
-            render={() => {
-              return (
-                <Signup
-                  isLoggedIn={this.state.isLoggedIn}
-                  handleInput={this.handleInput}
-                  handleSignUp={this.handleSignUp}
-                />
-              );
-            }}
-          />
           <Route
             exact
             path="/login"
@@ -135,24 +112,24 @@ class App extends Component {
             }}
           />
           <Route
+          exact
             path="/story/edit/:id"
-            render={(props) => {
+            render={props => {
               return <Edit {...props} />;
             }}
           />
+          <Route exact path="/story/create" component={Form} />
           <Route
-            path="/story/create"
-            component={Form}
-          />
-          <Route
+          exact
             path="/story/:id/view"
-            render={(props) => {
+            render={props => {
               return <StoryItem {...props} />;
             }}
           />
           <Route
+          exact
             path="/all_stories"
-            render={(props) => {
+            render={props => {
               return (
                 <StoriesList
                   {...props}
@@ -165,7 +142,7 @@ class App extends Component {
           <Route
             exact
             path="/about"
-            render={()=> {
+            render={() => {
               return <About />;
             }}
           />
