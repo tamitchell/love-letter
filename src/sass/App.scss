@@ -9,4 +9,5 @@
 body {
     background-color: $background;
     background-image: url('https://i.pinimg.com/originals/90/ba/ec/90baec7b6c9c263c8371a20f8252cdaf.png');
+    @include background-setup();
 }

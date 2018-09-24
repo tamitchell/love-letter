@@ -1,28 +1,9 @@
-import React, {Component} from "react";
+import React from "react";
 import {Tab, Row, Button, Col, Card, CardTitle, Modal, Input } from "react-materialize";
 
-class Login extends Component {
-  constructor(props) {
-    super(props) 
-    this.state = {
-      username: '',
-      email: '',
-      password: ''
-
-    }
-  }
-
-  handleInput = e => {
-    const userState = this.state;
-    userState[e.target.name] = e.target.value;
-    this.setState(userState);
-  };
-
-  render() {
-
-    console.log(this.props.handleLogIn)
-    return (
-      <Modal
+const Login = (props) => {
+  console.log(props.handleLogIn)
+return ( <Modal
         className="login-modal transparent"
         trigger={
           <li className="tab" waves="light">
@@ -46,21 +27,23 @@ class Login extends Component {
               <p>
                 Don't have an account? Create one, it takes less than a minute.
               </p>
-              <Input placeholder="Placeholder" s={12} label="Username" />
-              <Input type="email" label="Email" s={12} />
-              <Input type="password" label="Password" s={12} />
+              <form >
+
+              <Input placeholder="Placeholder" name="username" s={12} label="Username" />
+              <Input type="email" name="email" label="Email" s={12} />
+              <Input type="password" name="email" label="Password" s={12} />
               <Input type="submit" label="Submit" />
+              </form>
   
               <Col s={12}>
                 <p>Login with social media</p>
-                <Button onClick={this.props.handleLogIn}>Google</Button>
+                <Button onClick={props.handleLogIn}>Google</Button>
               </Col>
             </Card>
           </Col>
         </Row>
       </Modal>
-    );
-  }
+)
 };
 
 export default Login;

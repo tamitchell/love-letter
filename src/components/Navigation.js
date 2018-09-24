@@ -1,60 +1,49 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Login from './Login'
-import { Tab, Tabs } from "react-materialize";
-
+import Login from "./Login";
+import {Tabs, Tab} from 'react-materialize'
 export default function Navigation(props) {
   const isLoggedIn = props.isLoggedIn;
-  console.log(isLoggedIn)
+  console.log(props);
   let loggedState;
   if (isLoggedIn) {
-    loggedState = (<div>
-        <Tab title="Profile">
-        <Link to="/user/:id/profile">
+    loggedState = (
+      <div className="tabs tabs-transparent">
+        <Link className="tab col s3" to="/user/:id/profile">
+          {/* <Tab title="Profile"> */}
           Profile
+          {/* </Tab> */}
         </Link>
-        </Tab>
 
-        <Tab title="Log Out">
-         <Link to="/logout" onClick={props.handleLogOut}>
-            Log Out
-          
+        <Link className="tab col s3" to="" title="Log Out" onClick={props.handleLogOut}>
+          Log Out
         </Link>
-        </Tab>
       </div>
     );
   } else {
     loggedState = (
-      <Tab title="Login">
-      <Login
-       isLoggedIn={props.isLoggedIn}
-       handleLogIn={props.handleLogIn}
-      />
-      </Tab>
+        <Login className="tab col s3" handleLogIn={props.handleLogIn} />
     );
   }
   return (
-    <div>
-
-    <Tabs className="transparent">
-      <Tab title="Home">
-        <Link to="/">
+    <div className="tabs tabs-transparent">
+      {/* <Tab title="Home"> */}
+        <Link className="tab col s3" to="/">
         Home
         </Link>
-
-      </Tab>
-      <Tab title="All Stories">
-      <Link to="/all_stories">
-        All Stories
+      {/* </Tab> */}
+      {/* <Tab title="Browse"> */}
+      <Link className="tab col s3" to="/all_stories">
+        Browse
       </Link>
-      </Tab>
-      <Tab title="Write a Story">
-      <Link to="/story/create">
+      {/* </Tab> */}
+      {/* <Tab title="Write"> */}
+      <Link className="tab col s3" to="/story/create">
         Write A Story
       </Link>
-      </Tab>
+      {/* </Tab> */}
       {loggedState}
-    </Tabs>
     </div>
+
   );
 }

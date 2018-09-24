@@ -1,76 +1,111 @@
 @import "./variables.scss";
 @import "./animation.scss";
+@import './mixins.scss';
 
 .home-component {
   height: 80vh;
   margin: 0;
-  padding: 0;
+  padding: 0 0 10em 0em;
   section {
     position: relative;
     height: 80vh;
     padding: 2em;
     .modal-btn {
       display: block;
-      margin: 15vh auto 0 auto;
+      margin: 0 auto 0 auto;
       background-color: transparent;
       box-shadow: none;
       border: none;
-      .moon {
-        position: relative;
-        display: block;
-        margin: 0 auto;
-        width: 50vw;
-        max-width: 400px;
-        min-width: 150px;
-        height: 50vw;
-        max-height: 400px;
-        min-height: 150px;
+      .moon-shadowouter {
+        width: 80vw;
+        max-width: 600px;
+        min-width: 300px;
+        height: 80vw;
+        max-height: 600px;
+        min-height: 300px;
         border-radius: 50%;
-        background-color: $moon;
-        border: none;
+        z-index: -2;
+        background-color: rgba($color: $moon, $alpha: 0.2);
+        @include flexbox();
         &:hover {
-          cursor: pointer;
+          animation: pulsate 1s ease-in-out;
         }
-        &::after {
-          width: 60vw;
-          max-width: 500px;
+        .moon-shadowinner {
+          width: 65vw;
+          max-width: 550px;
           min-width: 250px;
-          height: 60vw;
-          max-height: 500px;
+          height: 65vw;
+          max-height: 550px;
           min-height: 250px;
           border-radius: 50%;
           z-index: -1;
           background-color: rgba($color: $moon, $alpha: 0.5);
-          position: absolute;
-          content: "";
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        }
-        &::before {
-          width: 80vw;
-          max-width: 600px;
-          min-width: 300px;
-          height: 80vw;
-          max-height: 600px;
-          min-height: 300px;
-          border-radius: 50%;
-          z-index: -1;
-          background-color: rgba($color: $moon, $alpha: 0.2);
-          position: absolute;
-          content: "";
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        }
-        img {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          width: 50vw;
-          min-width: 100px;
-          max-width: 400px;
+          @include flexbox();
+          &:hover {
+            animation: pulsate 0.5s ease-in-out;
+            animation-delay: 2s;
+
+          }
+          .moon {
+            position: relative;
+            display: block;
+            margin: 0 auto;
+            width: 50vw;
+            max-width: 400px;
+            min-width: 150px;
+            height: 50vw;
+            max-height: 400px;
+            min-height: 150px;
+            border-radius: 50%;
+            background-color: $moon;
+            border: none;
+            &:hover {
+              cursor: pointer;
+              animation-delay: 2s;
+              animation: pulsate 0.5s ease-in-out;
+            }
+            // &::after {
+            // width: 60vw;
+            // max-width: 500px;
+            // min-width: 250px;
+            // height: 60vw;
+            // max-height: 500px;
+            // min-height: 250px;
+            // border-radius: 50%;
+            // z-index: -1;
+            // background-color: rgba($color: $moon, $alpha: 0.5);
+            //   position: absolute;
+            //   content: "";
+            //   top: 50%;
+            //   left: 50%;
+            //   transform: translate(-50%, -50%);
+            // }
+            // &::before {
+              // width: 80vw;
+              // max-width: 600px;
+              // min-width: 300px;
+              // height: 80vw;
+              // max-height: 600px;
+              // min-height: 300px;
+              // border-radius: 50%;
+              // z-index: -1;
+              // background-color: rgba($color: $moon, $alpha: 0.2);
+            //   position: absolute;
+            //   content: "";
+            //   top: 50%;
+            //   left: 50%;
+            //   transform: translate(-50%, -50%);
+            // }
+            img {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              width: 50vw;
+              min-width: 100px;
+              max-width: 400px;
+            }
+          }
         }
       }
     }
@@ -78,7 +113,7 @@
 }
 
 .modal-container {
-  h3{
+  h3 {
     color: black;
   }
   p {

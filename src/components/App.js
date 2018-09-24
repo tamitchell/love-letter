@@ -62,15 +62,9 @@ class App extends Component {
     this.setState(userState);
   };
 
-  handleLogIn = (e, username, email, password) => {
+  handleLogIn = (e) => {
     e.preventDefault();
     console.log('click')
-    firebase.auth().createUserWithEmailAndPassword(username, email, password).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // ...
-    });
     auth.signInWithPopup(provider)
     .then((result) => {
       const isLoggedIn = result.user.I;
