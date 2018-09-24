@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import firebase, { auth, provider } from "../firebase.js";
 import Home from "./Home";
-import Login from "./Login";
 import User from "./User";
 import Form from "./Form";
 import StoriesList from "./StoriesList";
@@ -10,12 +9,14 @@ import Navigation from "./Navigation";
 import Edit from "./Edit";
 import StoryItem from "./StoryShow.js";
 import About from "./About";
+import Login from './Login'
 import "../sass/App.scss";
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoggedIn: null,
+      user: {},
       stories: []
     };
   }
@@ -48,6 +49,7 @@ class App extends Component {
       });
     });
     auth.onAuthStateChanged((user) => {
+      console.log(user)
       if (user) {
         this.setState({isLoggedIn: user.I})
       } 
@@ -60,8 +62,15 @@ class App extends Component {
     this.setState(userState);
   };
 
-  handleLogIn = (e) => {
+  handleLogIn = (e, username, email, password) => {
     e.preventDefault();
+    console.log('click')
+    firebase.auth().createUserWithEmailAndPassword(username, email, password).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ...
+    });
     auth.signInWithPopup(provider)
     .then((result) => {
       const isLoggedIn = result.user.I;
@@ -91,18 +100,8 @@ class App extends Component {
         />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route
-            path="/login"
-            render={() => {
-              return (
-                <Login
-                  isLoggedIn={this.state.isLoggedIn}
-                  handleInput={this.handleInput}
-                  handleLogIn={this.handleLogIn}
-                />
-              );
-            }}
-          />
+
+
           <Route
             path="/user/:id/profile"
             render={() => {
@@ -112,11 +111,11 @@ class App extends Component {
           <Route
             path="/story/edit/:id"
             render={(props )=> {
-              return <Edit handlineInput={this.handleInput} {...props} />;
+              return <Edit {...props} />;
             }}
           />
           <Route path="/story/create" render={(props )=> {
-              return <Form handlineInput={this.handleInput} {...props} />;
+              return <Form {...props} />;
             }} />
           <Route
             path="/story/:id/view"

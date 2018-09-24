@@ -1,21 +1,9 @@
 @import './variables.scss';
 
-nav {
+.tabs {
     margin: 0;
     padding: 0;
     background-color: transparent;
     background: transparent;
     width: 100vw;
-    ul {
-        list-style-type: none;
-        li a{
-            float: right;
-            padding: 1em;
-            text-decoration: none;
-            color: $font-color;
-            &:hover {
-                border-bottom: 1px solid $font-color;
-            }
-        }
-    }
 }

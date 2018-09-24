@@ -1,39 +1,60 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Login from './Login'
+import { Tab, Tabs } from "react-materialize";
 
-export default function Navigation (props) {
-  console.log(props.isLoggedIn)
-  const isLoggedIn = props.isLoggedIn
-  let loggedState
-  if(isLoggedIn) {
+export default function Navigation(props) {
+  const isLoggedIn = props.isLoggedIn;
+  console.log(isLoggedIn)
+  let loggedState;
+  if (isLoggedIn) {
     loggedState = (<div>
-      <li className="tab">
-        <Link to="/user/:id/profile">Profile</Link>
-      </li>
+        <Tab title="Profile">
+        <Link to="/user/:id/profile">
+          Profile
+        </Link>
+        </Tab>
 
-      <li className="tab">
-        <Link to="/logout" onClick={props.handleLogOut}>Log Out</Link>
-      </li>
-    </div>
-    )
+        <Tab title="Log Out">
+         <Link to="/logout" onClick={props.handleLogOut}>
+            Log Out
+          
+        </Link>
+        </Tab>
+      </div>
+    );
   } else {
-    loggedState = (<li className="tab">
-                        <Link to="/all_stories" onClick={props.handleLogIn}>Log In</Link>
-                      </li>
-    )
+    loggedState = (
+      <Tab title="Login">
+      <Login
+       isLoggedIn={props.isLoggedIn}
+       handleLogIn={props.handleLogIn}
+      />
+      </Tab>
+    );
   }
   return (
-    <ul className="tabs tabs-transparent">
-      <li className="tab">
-        <Link to="/">Home</Link>
-      </li>
-      <li className="tab">
-        <Link to="/all_stories">All Stories</Link>
-      </li>
-      <li className="tab">
-        <Link to="/story/create">Write A Story</Link>
-      </li>
+    <div>
+
+    <Tabs className="transparent">
+      <Tab title="Home">
+        <Link to="/">
+        Home
+        </Link>
+
+      </Tab>
+      <Tab title="All Stories">
+      <Link to="/all_stories">
+        All Stories
+      </Link>
+      </Tab>
+      <Tab title="Write a Story">
+      <Link to="/story/create">
+        Write A Story
+      </Link>
+      </Tab>
       {loggedState}
-    </ul>
+    </Tabs>
+    </div>
   );
-};
+}

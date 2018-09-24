@@ -139,13 +139,6 @@ class WriteStory extends Component {
                   Do you want your story to be readable upon publishing?
                   <em> Note: this is set to private by default</em>
                 </p>
-                {/* <Input name="group1" type="radio" value="Public" label="Public" />
-              <Input
-                name="group1"
-                type="radio"
-                value="Private"
-                label="Private"
-              /> */}
                 <label>
                   <input name="group1" type="radio" value="true" />
                   <span>Keep private (default)</span>
