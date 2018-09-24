@@ -16,16 +16,7 @@ class WriteStory extends Component {
     super();
     this.state = {
       title: "",
-      tagline: "",
       summary: "",
-      you: "",
-      need: "",
-      go: "",
-      search: "",
-      find: "",
-      take: "",
-      returned: "",
-      changed: "",
       imgpath: "",
       genre: "",
       public: false
@@ -44,99 +35,130 @@ class WriteStory extends Component {
     const itemsRef = firebase.database().ref("items");
     const item = {
       title: this.state.title,
-      tagline: this.state.tagline,
       summary: this.state.summary,
-      you: this.state.you,
-      need: this.state.need,
-      go: this.state.go,
-      search: this.state.search,
-      find: this.state.find,
-      take: this.state.take,
-      returned: this.state.returned,
-      changed: this.state.changed,
       imgpath: this.state.imgpath,
       genre: this.state.genre
     };
     itemsRef.push(item);
+
+    setTimeout(this.props.history.push("/all_stories"), 4000);
   };
   render() {
     return (
       <div className="form-container">
-        <h1>Write A Story</h1>
+        <h1>Story Properties</h1>
         <form className="form" onSubmit={this.onSubmit}>
           {/* Title Brick */}
-          <div className="row header-row">
-            <div className="col s12 m6 l6">
-              Title:
-              <p className="input-field">
-                <input
+          <Row className="header-row">
+            <Row>
+              <Col className="input-field" s={12} m={6} l={6}>
+                <Input
                   id="title"
                   type="text"
                   onChange={this.onChange}
                   name="title"
+                  label="Title"
                 />
-                <label htmlFor="title">Story Title</label>
-              </p>
-            </div>
+              </Col>
 
-            {/* Author Brick */}
+              {/* Author Brick */}
 
-            <div className="col s12 m6 l6">
-              Author:
-              <p className="input-field">
-                <input
+              <Col className="input-field" s={12} m={6} l={6}>
+                <Input
                   type="text"
                   id="author"
                   onChange={this.onChange}
                   name="author"
+                  label="Author"
                 />
-                <label htmlFor="author">Author</label>
-              </p>
-            </div>
+              </Col>
+            </Row>
 
             {/* Tagline Brick */}
+            <Row>
+              <Col s={12} m={12} l={12}>
+                <label>Genre</label>
+                <select
+                  name="genre"
+                  onChange={this.onChange}
+                  className="browser-default"
+                  defaultValue=""
+                >
+                  <option value="" disabled>
+                    Choose your option
+                  </option>
+                  <option value="Action">Action</option>
+                  <option value="Adventure">Adventure</option>
+                  <option value="Anime/manga">Anime and Manga</option>
+                  <option value="Comedy">Comedy</option>
+                  <option value="Crime">Crime</option>
+                  <option value="Drama">Drama</option>
+                  <option value="Fantasy">Fantasy</option>
+                  <option value="Horror">Horror</option>
+                  <option value="Mystery">Mystery</option>
+                  <option value="Romance">Romance</option>
+                  <option value="Sci-Fi">Science Fiction</option>
+                  <option value="Thriller">Thriller</option>
+                </select>
+              </Col>
 
-            <div className="col s12 m12 l12">
-              <label>Genre</label>
-              <select
-                name="genre"
-                onChange={this.onChange}
-                className="browser-default"
-              >
-                <option value="" disabled>
-                  Choose your option
-                </option>
-                <option value="action">Action</option>
-                <option value="adventure">Adventure</option>
-                <option value="anime/manga">Anime and Manga</option>
-                <option value="comedy">Comedy</option>
-                <option value="crime">Crime</option>
-                <option value="drama">Drama</option>
-                <option value="fantasy">Fantasy</option>
-                <option value="horror">Horror</option>
-                <option value="mystery">Mystery</option>
-                <option value="Romance">Romance</option>
-                <option value="scifi">Science Fiction</option>
-                <option value="thriller">Thriller</option>
-              </select>
-            </div>
-
-            <div className="col s12 m12 l12">
-              <div className="">
-                <input
+              <Col s={12} m={6} l={6}>
+                <Input
                   name="imgpath"
-                  placeholder="url to image"
+                  label="Cover Image"
                   onChange={this.onChange}
                   type="text"
                 />
-                <p>
-                  <em>This will be used as your story's display image.</em>
-                </p>
-              </div>
-            </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col s={12} m={6} l={6}>
+                <label>Rating</label>
+                <select
+                  name="rating"
+                  onChange={this.onChange}
+                  className="browser-default"
+                  defaultValue="T"
+                >
+                  <option value="" disabled>
+                    Choose your option
+                  </option>
+                  <option value="K">Rated: K</option>
+                  <option value="K+">Rated: K+</option>
+                  <option value="T">Rated: T</option>
+                  <option value="M">Rated: M</option>
+                </select>
+              </Col>
+              <Col s={12} m={6} l={6}>
+                <label>Language</label>
+                <select
+                  name="language"
+                  onChange={this.onChange}
+                  className="browser-default"
+                  defaultValue="English"
+                >
+                  <option value="" disabled>
+                    Choose your option
+                  </option>
+                  <option value="English">English</option>
+                  <option value="Spanish">Español</option>
+                  <option value="Mandarin">中文</option>
+                  <option value="Arabic">العَرَبِيَّة</option>
+                  <option value="Dutch">Nederlands</option>
+                  <option value="Filipino">Filipino</option>
+                  <option value="French">Français</option>
+                  <option value="German">Deutsch</option>
+                  <option value="Hindi">हिन्दी</option>
+                  <option value="Italian">Italiano</option>
+                  <option value="Japanese">日本語</option>
+                  <option value="Korean">한국어</option>
+                  <option value="Russian">русский</option>
+                </select>
+              </Col>
+            </Row>
 
-            <div className="col s12 m12 l12">
-              <div className="radio">
+            <Row>
+              <Col s={12} m={12} l={12}>
                 <p>
                   Do you want your story to be readable upon publishing?
                   <em> Note: this is set to private by default</em>
@@ -145,36 +167,20 @@ class WriteStory extends Component {
                   <input name="group1" type="radio" value="true" />
                   <span>Keep private (default)</span>
                 </label>
-              </div>
-              <p>
-                <label>
-                  <input name="group1" type="radio" value="false" />
-                  <span>Public</span>
-                </label>
-              </p>
-            </div>
-          </div>
+                <p>
+                  <label>
+                    <input name="group1" type="radio" value="false" />
+                    <span>Public</span>
+                  </label>
+                </p>
+              </Col>
+            </Row>
+          </Row>
           {/* Summary Brick */}
-          <DisplayRow name={"Summary"} />
-          {/* You Brick */}
-          <DisplayRow name={"You"} />
-          {/* Need Brick */}
-          <DisplayRow name={"Need"} />
-          {/* Go Brick */}
-          <DisplayRow name={"Go"} />
-          {/* Search Brick */}
-          <DisplayRow name={"Search"} />
-          {/* Find Brick */}
-          <DisplayRow name={"Find"} />
-          {/* Take Brick */}
-          <DisplayRow name={"Take"} />
-          {/* Return Brick */}
-          <DisplayRow name={"Returned"} />
-          {/* Change Brick */}
-          <DisplayRow name={"Changed"} />
+          <DisplayRow onChange={this.onChange} name={"Summary"} />
 
-          <Toast type="submit" toast="STORY PUBLISHED!">
-            PUBLISH
+          <Toast type="submit" toast="STORY SAVED! Heading to Main Page">
+            SAVE
           </Toast>
         </form>
       </div>
@@ -186,20 +192,6 @@ function DisplayRow(props) {
   let field = props.name.toLowerCase();
   return (
     <Row>
-      {/* <div className="card orange accent-3 col s12 m5 l5">
-            <div className="card-content">
-              <span className="card-title activator grey-text text-darken-4">
-                {props.name}
-                <Icon small>more_vert</Icon>
-              </span>
-            </div>
-            <div className="card-reveal orange accent-3">
-              <span className="card-title grey-text text-darken-4">
-                <i className="material-icons right">close</i>
-              </span>
-              {defaultinfo[field]}
-            </div>
-          </div> */}
       <Col s={12} m={5} l={5}>
         <Card
           className="orange accent-3"
@@ -212,20 +204,10 @@ function DisplayRow(props) {
         <Input
           className="text-box browser-default"
           type="textarea"
-          onChange={props.onChange}
+          onChange={e => props.onChange(e)}
           name={props.name}
         />
       </Col>
-
-      {/* <p className="input-field col s12 m7 l7">
-          <textarea
-            type="text"
-            maxLength={300}
-            onChange={props.onChange}
-            name={props.name}
-          />
-          <label htmlFor={props.name}>{props.name}</label>
-        </p> */}
     </Row>
   );
 }

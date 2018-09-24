@@ -7,7 +7,6 @@ export default function StoriesList (props) {
   let story
   if (props.stories != null || undefined) {
     story =  props.stories.map((story, i) => {
-      console.log(story.imgpath)
       return (
         <Row key={i} className="storylist-item">
           <Col className="img-box" s={12} m={5} l={3}>

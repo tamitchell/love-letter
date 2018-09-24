@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Toast, Modal, Button } from "react-materialize";
+import { Toast, Modal, Button, Card, CardTitle, Row, Col, Input } from "react-materialize";
 import firebase from "../firebase.js";
 import { defaultinfo } from "./info.js";
 class Edit extends Component {
@@ -33,11 +33,14 @@ class Edit extends Component {
       .database()
       .ref(`/items/${this.props.match.params.id}`);
     itemRef.remove();
+    setTimeout(this.props.history.push('/all_stories'), 4000)
+
   };
 
   onSubmit = e => {
     e.preventDefault();
     this.editStory(this.props.match.params.id);
+    setTimeout(this.props.history.push('/all_stories'), 4000)
   };
 
   render() {
@@ -71,6 +74,7 @@ class Edit extends Component {
                   type="text"
                   id="author"
                   onChange={this.onChange}
+                  defaultValue={story.author}
                   name="author"
                 />
                 <label htmlFor="author">Author</label>
@@ -85,6 +89,7 @@ class Edit extends Component {
                 name="genre"
                 onChange={this.onChange}
                 className="browser-default"
+                defaultValue={story}
               >
                 <option value="" disabled>
                   Choose your option
@@ -141,28 +146,28 @@ class Edit extends Component {
 
           {/* Summary Brick */}
 
-          <DisplayRow story={story} name={"Summary"} />
+          <DisplayRow onChange={this.onChange} story={story} name={"Summary"} />
 
           {/* You Brick */}
-          <DisplayRow story={story} name={"You"} />
+          <DisplayRow onChange={this.onChange} story={story} name={"You"} />
           {/* Need Brick */}
-          <DisplayRow story={story} name={"Need"} />
+          <DisplayRow onChange={this.onChange} story={story} name={"Need"} />
 
           {/* Go Brick */}
-          <DisplayRow story={story} name={"Go"} />
+          <DisplayRow onChange={this.onChange} story={story} name={"Go"} />
 
           {/* Search Brick */}
-          <DisplayRow story={story} name={"Search"} />
+          <DisplayRow onChange={this.onChange} story={story} name={"Search"} />
           {/* Find Brick */}
-          <DisplayRow story={story} name={"Find"} />
+          <DisplayRow onChange={this.onChange} story={story} name={"Find"} />
           {/* Take Brick */}
-          <DisplayRow story={story} name={"Take"} />
+          <DisplayRow onChange={this.onChange} story={story} name={"Take"} />
           {/* Return Brick */}
-          <DisplayRow story={story} name={"Returned"} />
+          <DisplayRow onChange={this.onChange} story={story} name={"Returned"} />
           {/* Changed Brick */}
-          <DisplayRow story={story} name={"Changed"} />
+          <DisplayRow onChange={this.onChange} story={story} name={"Changed"} />
 
-          <Toast type="submit" toast="STORY UPDATED!">
+          <Toast type="submit" toast="STORY UPDATED! Heading back to Main Page">
             UPDATE
           </Toast>
 
@@ -191,40 +196,33 @@ class Edit extends Component {
 // Pass color string and get a start with that color fill
 function DisplayRow(props) {
   let field = props.name.toLowerCase();
+  let name = props.name
   let story = props.story;
+  console.log(story)
+  console.log(name)
   if (!story || !Object.getOwnPropertyNames(story).length) {
     return <div>Loading...</div>;
   } else {
     return (
-      <div className="row">
-        <div className="col s12 l12">
-          <div className="card orange accent-3 col s12 m5 l5">
-            <div className="card-content">
-              <span className="card-title activator grey-text text-darken-4">
-                {props.name}
-                <i className="material-icons right">more_vert</i>
-              </span>
-            </div>
-            <div className="card-reveal orange accent-3">
-              <span className="card-title grey-text text-darken-4">
-                <i className="material-icons right">close</i>
-              </span>
-              {defaultinfo[field]}
-            </div>
-          </div>
-
-          <p className="input-field col s12 m7 l7">
-            <textarea
-              type="text"
-              maxLength={300}
-              onChange={props.onChange}
-              defaultValue={props.story[field]}
-              name={props.name}
-            />
-            <label htmlFor={props.name}>{props.name}</label>
-          </p>
-        </div>
-      </div>
+      <Row>
+      <Col s={12} m={5} l={5}>
+        <Card
+          className="orange accent-3"
+          header={<CardTitle reveal image={""} />}
+          title={props.name}
+          reveal={defaultinfo[field]}
+        />
+      </Col>
+      <Col s={12} m={7} l={7}>
+        <Input
+          className="text-box browser-default"
+          type="textarea"
+          onChange={props.onChange}
+          defaultValue={story[field]}
+          name={field}
+        />
+      </Col>
+    </Row>
     );
   }
 }

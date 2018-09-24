@@ -28,19 +28,7 @@ class App extends Component {
       for (let item in storiesArr) {
         fetchedStories.push({
           key: item,
-          title: storiesArr[item].title,
-          author: storiesArr[item].author,
-          summary: storiesArr[item].summary,
-          you: storiesArr[item].you,
-          need: storiesArr[item].need,
-          go: storiesArr[item].go,
-          search: storiesArr[item].search,
-          find: storiesArr[item].find,
-          take: storiesArr[item].take,
-          returned: storiesArr[item].returned,
-          changed: storiesArr[item].changed,
-          imgpath: storiesArr[item].imgpath,
-          genre: storiesArr[item].genre
+          book: storiesArr[item].book
         });
       }
       this.setState({
@@ -114,11 +102,13 @@ class App extends Component {
           <Route
           exact
             path="/story/edit/:id"
-            render={props => {
-              return <Edit {...props} />;
+            render={(props )=> {
+              return <Edit handlineInput={this.handleInput} {...props} />;
             }}
           />
-          <Route exact path="/story/create" component={Form} />
+          <Route exact path="/story/create" render={(props )=> {
+              return <Form handlineInput={this.handleInput} {...props} />;
+            }} />
           <Route
           exact
             path="/story/:id/view"

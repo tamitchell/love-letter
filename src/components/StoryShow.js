@@ -33,7 +33,7 @@ class StoryItem extends Component {
         <p>{story.search}</p>
         <p>{story.find}</p>
         <p>{story.take}</p>
-        <p>{story.return}</p>
+        <p>{story.returned}</p>
         <p>{story.changed}</p>
         <Link to={{
           pathname: `/story/edit/${this.props.match.params.id}`
