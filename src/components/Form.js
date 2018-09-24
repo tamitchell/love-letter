@@ -16,7 +16,17 @@ class WriteStory extends Component {
     super();
     this.state = {
       title: "",
+      tagline: "",
       summary: "",
+      author: "",
+      you: "",
+      need: "",
+      go: "",
+      search: "",
+      find: "",
+      take: "",
+      returned: "",
+      changed: "",
       imgpath: "",
       genre: "",
       public: false
@@ -35,7 +45,17 @@ class WriteStory extends Component {
     const itemsRef = firebase.database().ref("items");
     const item = {
       title: this.state.title,
+      author: this.state.author,
+      tagline: this.state.tagline,
       summary: this.state.summary,
+      you: this.state.you,
+      need: this.state.need,
+      go: this.state.go,
+      search: this.state.search,
+      find: this.state.find,
+      take: this.state.take,
+      returned: this.state.returned,
+      changed: this.state.changed,
       imgpath: this.state.imgpath,
       genre: this.state.genre
     };
@@ -46,7 +66,7 @@ class WriteStory extends Component {
   render() {
     return (
       <div className="form-container">
-        <h1>Story Properties</h1>
+        <h1>Write A Story</h1>
         <form className="form" onSubmit={this.onSubmit}>
           {/* Title Brick */}
           <Row className="header-row">
@@ -70,6 +90,7 @@ class WriteStory extends Component {
                   onChange={this.onChange}
                   name="author"
                   label="Author"
+
                 />
               </Col>
             </Row>
@@ -82,7 +103,6 @@ class WriteStory extends Component {
                   name="genre"
                   onChange={this.onChange}
                   className="browser-default"
-                  defaultValue=""
                 >
                   <option value="" disabled>
                     Choose your option
@@ -105,55 +125,11 @@ class WriteStory extends Component {
               <Col s={12} m={6} l={6}>
                 <Input
                   name="imgpath"
-                  label="Cover Image"
+                  label="Preview Image"
+                  placeholder="url to image"
                   onChange={this.onChange}
                   type="text"
                 />
-              </Col>
-            </Row>
-            <Row>
-              <Col s={12} m={6} l={6}>
-                <label>Rating</label>
-                <select
-                  name="rating"
-                  onChange={this.onChange}
-                  className="browser-default"
-                  defaultValue="T"
-                >
-                  <option value="" disabled>
-                    Choose your option
-                  </option>
-                  <option value="K">Rated: K</option>
-                  <option value="K+">Rated: K+</option>
-                  <option value="T">Rated: T</option>
-                  <option value="M">Rated: M</option>
-                </select>
-              </Col>
-              <Col s={12} m={6} l={6}>
-                <label>Language</label>
-                <select
-                  name="language"
-                  onChange={this.onChange}
-                  className="browser-default"
-                  defaultValue="English"
-                >
-                  <option value="" disabled>
-                    Choose your option
-                  </option>
-                  <option value="English">English</option>
-                  <option value="Spanish">Español</option>
-                  <option value="Mandarin">中文</option>
-                  <option value="Arabic">العَرَبِيَّة</option>
-                  <option value="Dutch">Nederlands</option>
-                  <option value="Filipino">Filipino</option>
-                  <option value="French">Français</option>
-                  <option value="German">Deutsch</option>
-                  <option value="Hindi">हिन्दी</option>
-                  <option value="Italian">Italiano</option>
-                  <option value="Japanese">日本語</option>
-                  <option value="Korean">한국어</option>
-                  <option value="Russian">русский</option>
-                </select>
               </Col>
             </Row>
 
@@ -163,6 +139,13 @@ class WriteStory extends Component {
                   Do you want your story to be readable upon publishing?
                   <em> Note: this is set to private by default</em>
                 </p>
+                {/* <Input name="group1" type="radio" value="Public" label="Public" />
+              <Input
+                name="group1"
+                type="radio"
+                value="Private"
+                label="Private"
+              /> */}
                 <label>
                   <input name="group1" type="radio" value="true" />
                   <span>Keep private (default)</span>
@@ -179,8 +162,27 @@ class WriteStory extends Component {
           {/* Summary Brick */}
           <DisplayRow onChange={this.onChange} name={"Summary"} />
 
-          <Toast type="submit" toast="STORY SAVED! Heading to Main Page">
-            SAVE
+          <DisplayRow onChange={this.onChange} name={"You"} />
+
+
+          <DisplayRow onChange={this.onChange} name={"Need"} />
+
+          {/* Go Brick */}
+          <DisplayRow onChange={this.onChange}  name={"Go"} />
+
+          {/* Search Brick */}
+          <DisplayRow onChange={this.onChange}  name={"Search"} />
+          {/* Find Brick */}
+          <DisplayRow onChange={this.onChange}  name={"Find"} />
+          {/* Take Brick */}
+          <DisplayRow onChange={this.onChange}  name={"Take"} />
+          {/* Return Brick */}
+          <DisplayRow onChange={this.onChange}  name={"Returned"} />
+          {/* Changed Brick */}
+          <DisplayRow onChange={this.onChange}  name={"Changed"} />
+
+          <Toast type="submit" toast="STORY PUBLISHED! Heading to Main Page">
+            PUBLISH
           </Toast>
         </form>
       </div>
@@ -205,7 +207,7 @@ function DisplayRow(props) {
           className="text-box browser-default"
           type="textarea"
           onChange={e => props.onChange(e)}
-          name={props.name}
+          name={field}
         />
       </Col>
     </Row>

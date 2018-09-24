@@ -12,13 +12,13 @@ export default function Navigation (props) {
       </li>
 
       <li className="tab">
-        <Link to="/logout" onClick={props.handleLogOut()}>Log Out</Link>
+        <Link to="/logout" onClick={props.handleLogOut}>Log Out</Link>
       </li>
     </div>
     )
   } else {
     loggedState = (<li className="tab">
-                        <Link to="/all_stories" onClick={(e) => props.handleLogIn(e)}>Log In</Link>
+                        <Link to="/all_stories" onClick={props.handleLogIn}>Log In</Link>
                       </li>
     )
   }

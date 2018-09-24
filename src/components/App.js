@@ -28,7 +28,19 @@ class App extends Component {
       for (let item in storiesArr) {
         fetchedStories.push({
           key: item,
-          book: storiesArr[item].book
+          title: storiesArr[item].title,
+          author: storiesArr[item].author,
+          summary: storiesArr[item].summary,
+          you: storiesArr[item].you,
+          need: storiesArr[item].need,
+          go: storiesArr[item].go,
+          search: storiesArr[item].search,
+          find: storiesArr[item].find,
+          take: storiesArr[item].take,
+          returned: storiesArr[item].returned,
+          changed: storiesArr[item].changed,
+          imgpath: storiesArr[item].imgpath,
+          genre: storiesArr[item].genre
         });
       }
       this.setState({
@@ -78,9 +90,8 @@ class App extends Component {
           handleLogOut={this.handleLogOut}
         />
         <Switch>
-          <Route exact path="/" render={Home} />
+          <Route exact path="/" component={Home} />
           <Route
-            exact
             path="/login"
             render={() => {
               return (
@@ -93,31 +104,27 @@ class App extends Component {
             }}
           />
           <Route
-            exact
             path="/user/:id/profile"
             render={() => {
               return <User />;
             }}
           />
           <Route
-          exact
             path="/story/edit/:id"
             render={(props )=> {
               return <Edit handlineInput={this.handleInput} {...props} />;
             }}
           />
-          <Route exact path="/story/create" render={(props )=> {
+          <Route path="/story/create" render={(props )=> {
               return <Form handlineInput={this.handleInput} {...props} />;
             }} />
           <Route
-          exact
             path="/story/:id/view"
             render={props => {
               return <StoryItem {...props} />;
             }}
           />
           <Route
-          exact
             path="/all_stories"
             render={props => {
               return (
@@ -130,7 +137,6 @@ class App extends Component {
             }}
           />
           <Route
-            exact
             path="/about"
             render={() => {
               return <About />;

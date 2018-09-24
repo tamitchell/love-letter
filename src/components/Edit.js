@@ -52,23 +52,21 @@ class Edit extends Component {
           {/* Title Brick */}
           <div className="row header-row">
             <div className="col s12 m6 l6">
-              Title:
               <p className="input-field">
                 <input
                   id="title"
                   type="text"
                   onChange={this.onChange}
                   name="title"
+                  label="Story Title"
                   defaultValue={story.title}
                 />
-                <label htmlFor="title">Story Title</label>
               </p>
             </div>
 
             {/* Author Brick */}
 
             <div className="col s12 m6 l6">
-              Author:
               <p className="input-field">
                 <input
                   type="text"
@@ -76,8 +74,8 @@ class Edit extends Component {
                   onChange={this.onChange}
                   defaultValue={story.author}
                   name="author"
+                  label="Author"
                 />
-                <label htmlFor="author">Author</label>
               </p>
             </div>
 

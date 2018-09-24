@@ -1,6 +1,5 @@
 .storylist-component {
     padding: 0.5em;
-    border: 1px solid red;
     display: block;
     h5 {
         text-align: center;
@@ -15,7 +14,6 @@
         margin: 0.5em auto;
         padding: 0.5em;
           .img-box {
-            border: 1px solid red;
             height: 40vh;
             padding: 0;
             img{
@@ -24,7 +22,6 @@
             }
         }
         .text-box {
-            border: 1px solid blue;
             height: auto;
         }
     }
