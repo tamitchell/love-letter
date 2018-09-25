@@ -1,17 +1,14 @@
 import React, { Fragment } from "react";
 import {
-  Tab,
   Row,
   Button,
   Col,
   Card,
   CardTitle,
-  Modal,
   Input
 } from "react-materialize";
 
 const Login = props => {
-  console.log(props.handleLogIn);
   return (
     <Fragment>
       <Row className="login-container">
@@ -40,7 +37,7 @@ const Login = props => {
                 label="Username"
               />
               <Input type="email" name="email" label="Email" s={12} />
-              <Input type="password" name="email" label="Password" s={12} />
+              <Input type="password" name="password" autocomplete="new-password" label="Password" s={12} />
               <Input type="submit" label="Submit" />
             </form>
 

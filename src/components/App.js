@@ -4,7 +4,7 @@ import firebase, { auth, provider } from "../firebase.js";
 import Home from "./Home";
 import User from "./User";
 import Form from "./Form";
-import StoriesList from "./StoriesList";
+// import StoriesList from "./StoriesList";
 import Navigation from "./Navigation";
 import Edit from "./Edit";
 import StoryItem from "./StoryShow.js";
@@ -49,10 +49,8 @@ class App extends Component {
       this.setState({
         stories: fetchedStories
       });
-      console.log(this.state.stories)
     });
     auth.onAuthStateChanged((user) => {
-      console.log(user)
       if (user) {
         this.setState({isLoggedIn: user.I})
       } 
@@ -67,7 +65,6 @@ class App extends Component {
 
   handleLogIn = (e) => {
     e.preventDefault();
-    console.log('click')
     auth.signInWithPopup(provider)
     .then((result) => {
       const isLoggedIn = result.user.I;
@@ -98,6 +95,7 @@ class App extends Component {
           stories={this.state.stories}
         />
         <Switch>
+          <Route exact path="/" component={Home} />
           <Route
             path="/user/:id/profile"
             render={() => {

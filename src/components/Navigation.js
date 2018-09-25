@@ -3,16 +3,11 @@ import { Link } from "react-router-dom";
 import Login from "./Login";
 import {Tabs, Tab} from 'react-materialize'
 import Home from "./Home";
-import User from "./User";
 import Form from "./Form";
 import StoriesList from "./StoriesList";
-import Edit from "./Edit";
-import StoryItem from "./StoryShow.js";
-import About from "./About";
 
 export default function Navigation(props) {
   const isLoggedIn = props.isLoggedIn;
-  console.log(props);
   let loggedState;
   if (isLoggedIn) {
     loggedState = (

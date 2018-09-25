@@ -239,10 +239,8 @@ class Edit extends Component {
 // Pass color string and get a start with that color fill
 function DisplayRow(props) {
   let field = props.name.toLowerCase();
-  let name = props.name
   let story = props.story;
-  console.log(story)
-  console.log(name)
+
   if (!story || !Object.getOwnPropertyNames(story).length) {
     return <div>Loading...</div>;
   } else {
