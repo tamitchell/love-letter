@@ -3,11 +3,15 @@
 .tabs {
     margin: 0;
     padding: 0;
-    background-color: transparent;
     background: transparent;
     width: 100vw;
+    color: white;
     .tab {
         padding: 2em;
         color: white;
+        &:hover {
+            color: pink;
+            border-bottom: 1px solid pink;
+        }
     }
 }

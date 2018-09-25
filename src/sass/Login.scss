@@ -1,16 +1,22 @@
 @import "./mixins.scss";
 
 .login-container {
+  margin-top: 5em;
   position: relative;
+  border: 1px solid blue;
   @include flexbox();
-  flex-flow: row wrap;
   .login-component {
+    border: 1px solid red;
+    width: 100%;
+    @include flexbox();
+    flex-flow: row wrap;
     color: black;
     cursor: pointer;
     height: auto;
     .card {
       width: 60vw;
     //   max-width: 500px;
+    min-width: 350px;
 
       img {
         width: 100%;

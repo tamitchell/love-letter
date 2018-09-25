@@ -236,7 +236,6 @@ class Edit extends Component {
   }
 }
 
-// Pass color string and get a start with that color fill
 function DisplayRow(props) {
   let field = props.name.toLowerCase();
   let story = props.story;

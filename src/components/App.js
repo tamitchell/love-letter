@@ -4,11 +4,12 @@ import firebase, { auth, provider } from "../firebase.js";
 import Home from "./Home";
 import User from "./User";
 import Form from "./Form";
-// import StoriesList from "./StoriesList";
+import StoriesList from "./StoriesList";
 import Navigation from "./Navigation";
 import Edit from "./Edit";
 import StoryItem from "./StoryShow.js";
 import About from "./About";
+import Login from './Login'
 import "../sass/App.scss";
 class App extends Component {
   constructor(props) {
@@ -95,7 +96,7 @@ class App extends Component {
           stories={this.state.stories}
         />
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={Home}/>
           <Route
             path="/user/:id/profile"
             render={() => {
@@ -108,7 +109,7 @@ class App extends Component {
               return <Edit {...props} />;
             }}
           />
-          <Route path="/story/create" render={(props )=> {
+          <Route path="/story/new" render={(props )=> {
               return <Form {...props} />;
             }} />
           <Route
@@ -117,6 +118,16 @@ class App extends Component {
               return <StoryItem {...props} />;
             }}
           />
+          <Route path="/browse" render={(props) => {
+            return (<StoriesList
+            editStory={this.editStory}
+            stories={this.state.stories}
+            />)
+          }}
+          />
+          <Route path="/login" render={(props) => {
+            return <Login />
+          }}/>
           <Route
             path="/about"
             render={() => {

@@ -1,49 +1,56 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
-import Login from "./Login";
-import {Tabs, Tab} from 'react-materialize'
-import Home from "./Home";
-import Form from "./Form";
-import StoriesList from "./StoriesList";
+
 
 export default function Navigation(props) {
   const isLoggedIn = props.isLoggedIn;
   let loggedState;
   if (isLoggedIn) {
     loggedState = (
-      <div className="tabs tabs-transparent">
-          <Tab title="Profile">
+      <div>
+          <Link className="tab" to="/user/:id/profile" title="Profile">
           Profile
-          </Tab>
+          </Link>
 
-        <Link className="tab col s3" to="" title="Log Out" onClick={props.handleLogOut}>
+        <Link className="tab" to="" title="Log Out" onClick={props.handleLogOut}>
           Log Out
         </Link>
       </div>
     );
   } else {
     loggedState = (
-      <Tab title="Log In">
-      <Login className="tab col s3" handleLogIn={props.handleLogIn} />
-      </Tab>
+      <Link className="tab" to="/login">
+      Login
+      </Link>
     );
   }
   return (
-    <Tabs className="tabs tabs-transparent">
-      <Tab title="Home">
+    <ul className="tabs transparent">
+      <Link className="tab" to="/">
+      Home
+      </Link>
+      
+      {/* <Tab className="active" title="Home">
         <Home />
-      </Tab>
-      <Tab title="Browse">
+      </Tab> */}
+      <Link to="/browse" className="tab">
+      Browse
+      </Link>
+      {/* <Tab title="Browse">
         <StoriesList
         editStory={props.editStory}
         stories={props.stories}
         />
-       </Tab>
-      <Tab title="Write">
-        <Form />
-      </Tab>
-      {loggedState}
-    </Tabs>
+       </Tab> */}
 
+       <Link className="tab" to="/story/new">
+       Write
+       </Link>
+      {/* <Tab title="Write">
+        <Form />
+      </Tab> */}
+      {loggedState}
+</ul>
   );
 }
