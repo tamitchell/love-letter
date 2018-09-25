@@ -66,8 +66,7 @@ const Home = () => {
                 src="https://cdn.dribbble.com/users/1184562/screenshots/2760418/tail_dribbble.gif"
               >
                 <section>
-                  <h5>...Well?</h5>
-                <Link className="btn" to="/story/create">Get Started</Link>
+                <Link className="btn" to="/story/create">Start</Link>
                 </section>
               </Slide>
             </Slider>

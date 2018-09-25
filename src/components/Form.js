@@ -66,12 +66,11 @@ class WriteStory extends Component {
   render() {
     return (
       <div className="form-container">
-        <h1>Write A Story</h1>
         <form className="form" onSubmit={this.onSubmit}>
           {/* Title Brick */}
-          <Row className="header-row">
+          <Row className="card-panel header-row">
             <Row>
-              <Col className="input-field" s={12} m={6} l={6}>
+              <Col className="input-field" s={12} m={12} l={12}>
                 <Input
                   id="title"
                   type="text"
@@ -83,7 +82,7 @@ class WriteStory extends Component {
 
               {/* Author Brick */}
 
-              <Col className="input-field" s={12} m={6} l={6}>
+              <Col className="input-field" s={12} m={12} l={12}>
                 <Input
                   type="text"
                   id="author"
@@ -93,11 +92,60 @@ class WriteStory extends Component {
 
                 />
               </Col>
-            </Row>
+              </Row>
 
-            {/* Tagline Brick */}
-            <Row>
-              <Col s={12} m={12} l={12}>
+              <Row>
+
+              <Col 
+              className="select-form"
+              s={12} m={4} l={4}>
+                <label>Rating</label>
+                <select
+                  name="rating"
+                  onChange={this.onChange}
+                  className="browser-default"
+                  defaultValue="T"
+                >
+                  <option value="" disabled>
+                    Choose your option
+                  </option>
+                  <option value="K">Rated: K</option>
+                  <option value="K+">Rated: K+</option>
+                  <option value="T">Rated: T</option>
+                  <option value="M">Rated: M</option>
+                </select>
+              </Col>
+              <Col 
+              className="select-form"
+              s={12} m={4} l={4}>
+                <label>Language</label>
+                <select
+                  name="language"
+                  onChange={this.onChange}
+                  className="browser-default"
+                  defaultValue="English"
+                >
+                  <option value="" disabled>
+                    Choose your option
+                  </option>
+                  <option value="English">English</option>
+                  <option value="Spanish">Español</option>
+                  <option value="Mandarin">中文</option>
+                  <option value="Arabic">العَرَبِيَّة</option>
+                  <option value="Dutch">Nederlands</option>
+                  <option value="Filipino">Filipino</option>
+                  <option value="French">Français</option>
+                  <option value="German">Deutsch</option>
+                  <option value="Hindi">हिन्दी</option>
+                  <option value="Italian">Italiano</option>
+                  <option value="Japanese">日本語</option>
+                  <option value="Korean">한국어</option>
+                  <option value="Russian">русский</option>
+                </select>
+              </Col>
+              <Col 
+              className="select-form"
+              s={12} m={4} l={4}>
                 <label>Genre</label>
                 <select
                   name="genre"
@@ -121,19 +169,20 @@ class WriteStory extends Component {
                   <option value="Thriller">Thriller</option>
                 </select>
               </Col>
+                </Row>
 
-              <Col s={12} m={6} l={6}>
+            {/* Tagline Brick */}
+            <Row className="third-row">
+
+
+              <Col s={12} m={12} l={12}>
                 <Input
                   name="imgpath"
                   label="Preview Image"
-                  placeholder="url to image"
                   onChange={this.onChange}
                   type="text"
                 />
               </Col>
-            </Row>
-
-            <Row>
               <Col s={12} m={12} l={12}>
                 <p>
                   Do you want your story to be readable upon publishing?
@@ -185,6 +234,7 @@ class WriteStory extends Component {
 
 function DisplayRow(props) {
   let field = props.name.toLowerCase();
+  let content = defaultinfo[field]
   return (
     <Row>
       <Col s={12} m={5} l={5}>
@@ -192,7 +242,7 @@ function DisplayRow(props) {
           className="orange accent-3"
           header={<CardTitle reveal image={""} waves="light" />}
           title={props.name}
-          reveal={defaultinfo[field]}
+          reveal={content}
         />
       </Col>
       <Col s={12} m={7} l={7}>
