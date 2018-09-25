@@ -1,7 +1,7 @@
 @import "./mixins.scss";
 
 .form-container {
-  @include flexbox();
+  // @include flexbox();
   padding: 1em;
   width: 100%;
   form {
@@ -38,33 +38,19 @@
       }
     }
     .header-row {
-      background: linear-gradient(
-          217deg,
-          rgba($color: #554b7a, $alpha: 0.8),
-          rgba($color: #554b7a, $alpha: 0) 70.71%
-        ),
-        linear-gradient(
-          127deg,
-          rgba($color: #856188, $alpha: 0.8),
-          rgba($color: #856188, $alpha: 0) 70.71%
-        ),
-        linear-gradient(
-          336deg,
-          rgba($color: #D46773, $alpha: 0.8),
-          rgba($color: #D46773, $alpha: 0) 70.71%
-        );
-      // min-height: auto;
+      @include starrybackground();
       padding: 1em;
+      .titular {
+        text-align: center;
+        width: 100%;
+      }
       .row {
-        margin: 0;
-        @include flexbox();
-        flex-flow: row wrap;
+        margin: 0 auto;
         .col {
           height: 10vh;
           padding: 0;
           margin: 0;
           width: 100%;
-
           padding: 0.5em;
         }
       }
@@ -81,13 +67,11 @@
         }
       }
     }
+    .toast-btn {
+      background: #D46773;
+      width: 100%;
+    }
   }
-}
-
-#title,
-#author,
-#tagline {
-  height: 1em;
 }
 
 .delete-modal {
@@ -96,6 +80,7 @@
     padding: 1em;
   }
 }
+
 
 @media only screen and (min-width: 500px) {
   .form-container {

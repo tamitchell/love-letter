@@ -47,101 +47,138 @@ class Edit extends Component {
     const story = this.state.story;
     return (
       <div className="form-container">
-        <h1>Edit</h1>
         <form className="form" onSubmit={this.onSubmit}>
           {/* Title Brick */}
-          <div className="row header-row">
-            <div className="col s12 m6 l6">
-              <p className="input-field">
-                <input
-                  id="title"
+          <Row className="card-panel header-row">
+            <Col className="titular" s={12} m={12} l={12}>
+              <h5>Story Properties (Editor Mode)</h5>
+            </Col>
+            <Row>
+              <Col className="input-field" s={12} m={12} l={12}>
+                <Input
                   type="text"
                   onChange={this.onChange}
                   name="title"
-                  label="Story Title"
+                  label="Title"
                   defaultValue={story.title}
-                />
-              </p>
-            </div>
+                  />
+              </Col>
 
-            {/* Author Brick */}
+              {/* Author Brick */}
 
-            <div className="col s12 m6 l6">
-              <p className="input-field">
-                <input
+              <Col className="input-field" s={12} m={12} l={12}>
+                <Input
                   type="text"
-                  id="author"
                   onChange={this.onChange}
-                  defaultValue={story.author}
                   name="author"
                   label="Author"
+                  defaultValue={story.author}
                 />
-              </p>
-            </div>
+              </Col>
 
-            {/* Tagline Brick */}
-
-            <div className="col s12 m12 l12">
-              <label>Genre</label>
-              <select
-                name="genre"
-                onChange={this.onChange}
-                className="browser-default"
-                defaultValue={story}
-              >
-                <option value="" disabled>
-                  Choose your option
-                </option>
-                <option value="Action">Action</option>
-                <option value="Adventure">Adventure</option>
-                <option value="Anime/Manga">Anime and Manga</option>
-                <option value="Comedy">Comedy</option>
-                <option value="Crime">Crime</option>
-                <option value="Drama">Drama</option>
-                <option value="Fantasy">Fantasy</option>
-                <option value="Horror">Horror</option>
-                <option value="Mystery">Mystery</option>
-                <option value="Romance">Romance</option>
-                <option value="Sci-Fi">Science Fiction</option>
-                <option value="Thriller">Thriller</option>
-              </select>
-            </div>
-
-            <div className="col s12 m12 l12">
-              <div className="">
-                <input
+              <Col s={12} m={12} l={12}>
+                <Input
                   name="imgpath"
-                  placeholder="url to image"
+                  label="Cover Image"
                   onChange={this.onChange}
                   defaultValue={story.imgpath}
                   type="text"
                 />
-                <p>
-                  <em>This will be used as your story's display image.</em>
-                </p>
-              </div>
-            </div>
+              </Col>
+            </Row>
 
-            <div className="col s12 m12 l12">
-              <div className="radio">
+            <Row>
+              <Col className="select-form" s={12} m={4} l={4}>
+                <label>Rating</label>
+                <select
+                  name="rating"
+                  onChange={this.onChange}
+                  className="browser-default"
+                  defaultValue={story.rating}
+                >
+                  <option value="" disabled>
+                    Choose your option
+                  </option>
+                  <option value="K">Rated: K</option>
+                  <option value="K+">Rated: K+</option>
+                  <option value="T">Rated: T</option>
+                  <option value="M">Rated: M</option>
+                </select>
+              </Col>
+              <Col className="select-form" s={12} m={4} l={4}>
+                <label>Language</label>
+                <select
+                  name="language"
+                  onChange={this.onChange}
+                  className="browser-default"
+                  defaultValue={story.language}
+                >
+                  <option value="" disabled>
+                    Choose your option
+                  </option>
+                  <option value="English">English</option>
+                  <option value="Spanish">Español</option>
+                  <option value="Mandarin">中文</option>
+                  <option value="Arabic">العَرَبِيَّة</option>
+                  <option value="Dutch">Nederlands</option>
+                  <option value="Filipino">Filipino</option>
+                  <option value="French">Français</option>
+                  <option value="German">Deutsch</option>
+                  <option value="Hindi">हिन्दी</option>
+                  <option value="Italian">Italiano</option>
+                  <option value="Japanese">日本語</option>
+                  <option value="Korean">한국어</option>
+                  <option value="Russian">русский</option>
+                </select>
+              </Col>
+              <Col className="select-form" s={12} m={4} l={4}>
+                <label>Genre</label>
+                <select
+                  name="genre"
+                  onChange={this.onChange}
+                  className="browser-default"
+                  defaultValue={story.genre}
+                >
+                  <option value="" disabled>
+                    Choose your option
+                  </option>
+                  <option value="Action">Action</option>
+                  <option value="Adventure">Adventure</option>
+                  <option value="Anime/manga">Anime and Manga</option>
+                  <option value="Comedy">Comedy</option>
+                  <option value="Crime">Crime</option>
+                  <option value="Drama">Drama</option>
+                  <option value="Fantasy">Fantasy</option>
+                  <option value="Horror">Horror</option>
+                  <option value="Mystery">Mystery</option>
+                  <option value="Romance">Romance</option>
+                  <option value="Sci-Fi">Science Fiction</option>
+                  <option value="Thriller">Thriller</option>
+                </select>
+              </Col>
+            </Row>
+
+            {/* Tagline Brick */}
+            <Row className="third-row">
+              <Col s={12} m={12} l={12}>
                 <p>
                   Do you want your story to be readable upon publishing?
                   <em> Note: this is set to private by default</em>
+                  <br />
+                  <br />
+                  <label>
+                    <input name="private" type="radio" value={true} />
+                    <span>Keep private (default)</span>
+                  </label>
+                  <br />
+                  <label>
+                    <input name="private" type="radio" value={false} />
+                    <span>Public</span>
+                  </label>
                 </p>
-                <label>
-                  <input name="group1" type="radio" value="true" />
-                  <span>Keep private (default)</span>
-                </label>
-              </div>
-              <p>
-                <label>
-                  <input name="group1" type="radio" value="false" />
-                  <span>Public</span>
-                </label>
-              </p>
-            </div>
-          </div>
-
+              </Col>
+            </Row>
+          </Row>
           {/* Summary Brick */}
 
           <DisplayRow onChange={this.onChange} story={story} name={"Summary"} />
@@ -165,10 +202,14 @@ class Edit extends Component {
           {/* Changed Brick */}
           <DisplayRow onChange={this.onChange} story={story} name={"Changed"} />
 
+          <Row>
+
+            <Col s={12} m={6} l={6}>
           <Toast type="submit" toast="STORY UPDATED! Heading back to Main Page">
             UPDATE
           </Toast>
-
+            </Col>
+            <Col s={12} m={6} l={6}>
           <Modal
             header="Are you sure?"
             className="delete-modal"
@@ -185,6 +226,10 @@ class Edit extends Component {
               </Button> 
             </p>
           </Modal>
+            </Col>
+          </Row>
+
+
         </form>
       </div>
     );

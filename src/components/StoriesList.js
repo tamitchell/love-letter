@@ -25,7 +25,7 @@ export default function StoriesList (props) {
             storyKey: story.key}}>
             <button type="button">Read More</button>
         </Link>
-            <p>Genre: {story.genre}</p>
+            <p>Genre: {story.genre} | Rating: {story.rating} | Language: {story.language} </p>
           </Col>
         </Row>
       );

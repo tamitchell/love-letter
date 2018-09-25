@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import {
   Toast,
-  Icon,
   Row,
   Col,
   Card,
@@ -29,7 +28,9 @@ class WriteStory extends Component {
       changed: "",
       imgpath: "",
       genre: "",
-      public: false
+      rating: "",
+      language: '',
+      private: true
     };
   }
 
@@ -37,7 +38,6 @@ class WriteStory extends Component {
     const storyState = this.state;
     storyState[e.target.name] = e.target.value;
     this.setState(storyState);
-    console.log(storyState);
   };
 
   onSubmit = e => {
@@ -57,7 +57,10 @@ class WriteStory extends Component {
       returned: this.state.returned,
       changed: this.state.changed,
       imgpath: this.state.imgpath,
-      genre: this.state.genre
+      genre: this.state.genre,
+      rating: this.state.rating,
+      language: this.state.language,
+      private: this.state.private
     };
     itemsRef.push(item);
 
@@ -69,6 +72,9 @@ class WriteStory extends Component {
         <form className="form" onSubmit={this.onSubmit}>
           {/* Title Brick */}
           <Row className="card-panel header-row">
+            <Col className="titular" s={12} m={12} l={12}>
+              <h5>Story Properties</h5>
+            </Col>
             <Row>
               <Col className="input-field" s={12} m={12} l={12}>
                 <Input
@@ -87,7 +93,6 @@ class WriteStory extends Component {
                   onChange={this.onChange}
                   name="author"
                   label="Author"
-
                 />
               </Col>
 
@@ -99,13 +104,10 @@ class WriteStory extends Component {
                   type="text"
                 />
               </Col>
-              </Row>
+            </Row>
 
-              <Row>
-
-              <Col 
-              className="select-form"
-              s={12} m={4} l={4}>
+            <Row>
+              <Col className="select-form" s={12} m={4} l={4}>
                 <label>Rating</label>
                 <select
                   name="rating"
@@ -122,9 +124,7 @@ class WriteStory extends Component {
                   <option value="M">Rated: M</option>
                 </select>
               </Col>
-              <Col 
-              className="select-form"
-              s={12} m={4} l={4}>
+              <Col className="select-form" s={12} m={4} l={4}>
                 <label>Language</label>
                 <select
                   name="language"
@@ -150,9 +150,7 @@ class WriteStory extends Component {
                   <option value="Russian">русский</option>
                 </select>
               </Col>
-              <Col 
-              className="select-form"
-              s={12} m={4} l={4}>
+              <Col className="select-form" s={12} m={4} l={4}>
                 <label>Genre</label>
                 <select
                   name="genre"
@@ -176,25 +174,23 @@ class WriteStory extends Component {
                   <option value="Thriller">Thriller</option>
                 </select>
               </Col>
-                </Row>
+            </Row>
 
             {/* Tagline Brick */}
             <Row className="third-row">
-              <Col 
-              s={12} m={12} l={12}>
+              <Col s={12} m={12} l={12}>
                 <p>
                   Do you want your story to be readable upon publishing?
                   <em> Note: this is set to private by default</em>
                   <br />
                   <br />
-                <label>
-                  <input name="group1" type="radio" value="true" />
-                  <span>Keep private (default)</span>
-                </label>
-                <br />
-
                   <label>
-                    <input name="group1" type="radio" value="false" />
+                    <input name="private" type="radio" value={true} />
+                    <span>Keep private (default)</span>
+                  </label>
+                  <br />
+                  <label>
+                    <input name="private" type="radio" value={false} />
                     <span>Public</span>
                   </label>
                 </p>
@@ -206,24 +202,27 @@ class WriteStory extends Component {
 
           <DisplayRow onChange={this.onChange} name={"You"} />
 
-
           <DisplayRow onChange={this.onChange} name={"Need"} />
 
           {/* Go Brick */}
-          <DisplayRow onChange={this.onChange}  name={"Go"} />
+          <DisplayRow onChange={this.onChange} name={"Go"} />
 
           {/* Search Brick */}
-          <DisplayRow onChange={this.onChange}  name={"Search"} />
+          <DisplayRow onChange={this.onChange} name={"Search"} />
           {/* Find Brick */}
-          <DisplayRow onChange={this.onChange}  name={"Find"} />
+          <DisplayRow onChange={this.onChange} name={"Find"} />
           {/* Take Brick */}
-          <DisplayRow onChange={this.onChange}  name={"Take"} />
+          <DisplayRow onChange={this.onChange} name={"Take"} />
           {/* Return Brick */}
-          <DisplayRow onChange={this.onChange}  name={"Returned"} />
+          <DisplayRow onChange={this.onChange} name={"Returned"} />
           {/* Changed Brick */}
-          <DisplayRow onChange={this.onChange}  name={"Changed"} />
+          <DisplayRow onChange={this.onChange} name={"Changed"} />
 
-          <Toast type="submit" toast="STORY PUBLISHED! Heading to Main Page">
+          <Toast
+            className="toast-btn"
+            type="submit"
+            toast="STORY PUBLISHED! Heading to Main Page"
+          >
             PUBLISH
           </Toast>
         </form>
@@ -234,13 +233,13 @@ class WriteStory extends Component {
 
 function DisplayRow(props) {
   let field = props.name.toLowerCase();
-  let content = defaultinfo[field]
+  let content = defaultinfo[field];
   return (
     <Row>
       <Col s={12} m={5} l={5}>
         <Card
           className="orange accent-3"
-          header={<CardTitle reveal image={""} waves="light" />}
+          header={<CardTitle image={""} waves="light" />}
           title={props.name}
           reveal={content}
         />
@@ -249,7 +248,7 @@ function DisplayRow(props) {
         <Input
           className="text-box browser-default"
           type="textarea"
-          onChange={e => props.onChange(e)}
+          onChange={(e) => props.onChange(e)}
           name={field}
         />
       </Col>

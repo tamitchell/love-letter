@@ -9,7 +9,6 @@ import Navigation from "./Navigation";
 import Edit from "./Edit";
 import StoryItem from "./StoryShow.js";
 import About from "./About";
-import Login from './Login'
 import "../sass/App.scss";
 class App extends Component {
   constructor(props) {
@@ -41,12 +40,16 @@ class App extends Component {
           returned: storiesArr[item].returned,
           changed: storiesArr[item].changed,
           imgpath: storiesArr[item].imgpath,
-          genre: storiesArr[item].genre
+          genre: storiesArr[item].genre,
+          rating: storiesArr[item].rating,
+          language: storiesArr[item].language,
+          private: storiesArr[item].private
         });
       }
       this.setState({
         stories: fetchedStories
       });
+      console.log(this.state.stories)
     });
     auth.onAuthStateChanged((user) => {
       console.log(user)
@@ -91,11 +94,10 @@ class App extends Component {
           isLoggedIn={this.state.isLoggedIn}
           handleLogIn={this.handleLogIn}
           handleLogOut={this.handleLogOut}
+          editStory={this.editStory}
+          stories={this.state.stories}
         />
         <Switch>
-          <Route exact path="/" component={Home} />
-
-
           <Route
             path="/user/:id/profile"
             render={() => {
@@ -115,18 +117,6 @@ class App extends Component {
             path="/story/:id/view"
             render={props => {
               return <StoryItem {...props} />;
-            }}
-          />
-          <Route
-            path="/all_stories"
-            render={props => {
-              return (
-                <StoriesList
-                  {...props}
-                  editStory={this.editStory}
-                  stories={this.state.stories}
-                />
-              );
             }}
           />
           <Route

@@ -4,9 +4,34 @@
     background-repeat: no-repeat;
 }
 
+@mixin absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 15%);
+}
+
 @mixin flexbox {
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+}
+
+@mixin starrybackground {
+    background: linear-gradient(
+        217deg,
+        rgba($color: #554b7a, $alpha: 0.8),
+        rgba($color: #554b7a, $alpha: 0) 70.71%
+      ),
+      linear-gradient(
+        127deg,
+        rgba($color: #856188, $alpha: 0.8),
+        rgba($color: #856188, $alpha: 0) 70.71%
+      ),
+      linear-gradient(
+        336deg,
+        rgba($color: #D46773, $alpha: 0.8),
+        rgba($color: #D46773, $alpha: 0) 70.71%
+      );
 }

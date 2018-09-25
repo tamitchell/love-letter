@@ -1,21 +1,25 @@
-@import './mixins.scss';
+@import "./mixins.scss";
 
-    .login-modal {
-        box-shadow: none;
-        border: none;
-        color: black;
-        cursor: pointer;
-        height: auto;
-        .card {
-            width: 100%;
+.login-container {
+  position: relative;
+  @include flexbox();
+  flex-flow: row wrap;
+  .login-component {
+    color: black;
+    cursor: pointer;
+    height: auto;
+    .card {
+      width: 60vw;
+    //   max-width: 500px;
 
-            img {
-                width: 100%;
-                max-width: 400px;
-                height: 100%;
-            }
-            p {
-                padding: 0.5em;
-            }
-        }
+      img {
+        width: 100%;
+        max-width: 400px;
+        height: 100%;
+      }
+      p {
+        padding: 0.5em;
+      }
     }
+  }
+}
