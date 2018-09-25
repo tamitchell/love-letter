@@ -72,7 +72,6 @@ class WriteStory extends Component {
             <Row>
               <Col className="input-field" s={12} m={12} l={12}>
                 <Input
-                  id="title"
                   type="text"
                   onChange={this.onChange}
                   name="title"
@@ -85,11 +84,19 @@ class WriteStory extends Component {
               <Col className="input-field" s={12} m={12} l={12}>
                 <Input
                   type="text"
-                  id="author"
                   onChange={this.onChange}
                   name="author"
                   label="Author"
 
+                />
+              </Col>
+
+              <Col s={12} m={12} l={12}>
+                <Input
+                  name="imgpath"
+                  label="Cover Image"
+                  onChange={this.onChange}
+                  type="text"
                 />
               </Col>
               </Row>
@@ -173,26 +180,19 @@ class WriteStory extends Component {
 
             {/* Tagline Brick */}
             <Row className="third-row">
-
-
-              <Col s={12} m={12} l={12}>
-                <Input
-                  name="imgpath"
-                  label="Preview Image"
-                  onChange={this.onChange}
-                  type="text"
-                />
-              </Col>
-              <Col s={12} m={12} l={12}>
+              <Col 
+              s={12} m={12} l={12}>
                 <p>
                   Do you want your story to be readable upon publishing?
                   <em> Note: this is set to private by default</em>
-                </p>
+                  <br />
+                  <br />
                 <label>
                   <input name="group1" type="radio" value="true" />
                   <span>Keep private (default)</span>
                 </label>
-                <p>
+                <br />
+
                   <label>
                     <input name="group1" type="radio" value="false" />
                     <span>Public</span>
