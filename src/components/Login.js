@@ -24,25 +24,28 @@ const Login = props => {
               />
             }
           >
-            <h4>Register</h4>
+            <form>
+            <h5>Register</h5>
             <p>
               Don't have an account? Create one, it takes less than a minute.
             </p>
-            <form>
               <Input
                 placeholder="Placeholder"
                 name="username"
+                autoComplete="username"
                 s={12}
                 label="Username"
               />
-              <Input type="email" name="email" label="Email" s={12} />
-              <Input type="password" name="password" autocomplete="new-password" label="Password" s={12} />
-              <Input type="submit" label="Submit" />
+              <Input type="email" autoComplete="email" name="email" label="Email" s={12} />
+              <Input type="password" name="password" autoComplete="new-password" label="Password" s={12} />
+              <Input s={12} m={12} l={12} type="submit" className="btn login-btn" defaultValue="submit"  />
             </form>
 
-            <Col s={12}>
-              <p>Login with social media</p>
-              <Button onClick={props.handleLogIn}>Google</Button>
+            <Col 
+            className="social-media"
+            s={12}>
+              <p>OR</p>
+              <a onClick={props.handleLogIn}>Log in with Google</a>
             </Col>
           </Card>
         </Col>
