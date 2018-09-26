@@ -71,38 +71,6 @@
               animation-delay: 2s;
               animation: pulsate 0.5s ease-in-out;
             }
-            // &::after {
-            // width: 60vw;
-            // max-width: 500px;
-            // min-width: 250px;
-            // height: 60vw;
-            // max-height: 500px;
-            // min-height: 250px;
-            // border-radius: 50%;
-            // z-index: -1;
-            // background-color: rgba($color: $moon, $alpha: 0.5);
-            //   position: absolute;
-            //   content: "";
-            // top: 50%;
-            // left: 50%;
-            // transform: translate(-50%, -50%);
-            // }
-            // &::before {
-            // width: 80vw;
-            // max-width: 600px;
-            // min-width: 300px;
-            // height: 80vw;
-            // max-height: 600px;
-            // min-height: 300px;
-            // border-radius: 50%;
-            // z-index: -1;
-            // background-color: rgba($color: $moon, $alpha: 0.2);
-            //   position: absolute;
-            //   content: "";
-            //   top: 50%;
-            //   left: 50%;
-            //   transform: translate(-50%, -50%);
-            // }
             img {
               position: absolute;
               top: 50%;
@@ -124,8 +92,8 @@
   padding: 0;
   border: none;
   box-shadow: none;
-  width: 60vw;
-  min-width: 400px;
+  width: 100%;
+  max-width: 600px;
   .slider {
     height: 100%;
     section {

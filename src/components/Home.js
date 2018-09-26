@@ -1,11 +1,12 @@
-import React from "react";
+import React, {Fragment} from "react";
 import { Modal, Button, Row, Col, Slider, Slide } from "react-materialize";
 import { Link } from "react-router-dom";
 import fox from "../img/fox.png";
 
 const Home = () => {
   return (
-    <div className="wrapper">
+    <Fragment>
+
     <Row className="home-component">
       <Col s={12} m={12} l={12}>
         <section>
@@ -25,6 +26,7 @@ const Home = () => {
               </Button>
             }
           >
+          <div className="wrapper">
             <Slider className="slider">
               <Slide className="slide"
                 src="https://cdn.dribbble.com/users/1166566/screenshots/3549644/typing2.gif"
@@ -71,6 +73,7 @@ const Home = () => {
                 </section>
               </Slide>
             </Slider>
+          </div>
           </Modal>
         </section>
       </Col>
@@ -83,7 +86,7 @@ const Home = () => {
       </Col>
 
     </Row>
-    </div>
+    </Fragment>
   );
 };
 
