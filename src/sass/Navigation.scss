@@ -1,14 +1,19 @@
 @import './variables.scss';
+@import './mixins.scss';
 
-.tabs {
+nav {
     margin: 0;
     padding: 0;
-    background: transparent;
+    box-shadow: none;
     width: 100vw;
+    height: 100%;
     color: white;
-    .tab {
-        padding: 2em;
+    .nav-item {
+        padding: 1em;
         color: white;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 2px;
         &:hover {
             color: pink;
             border-bottom: 1px solid pink;

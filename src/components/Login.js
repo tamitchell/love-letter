@@ -23,7 +23,6 @@ const Login = props => {
                 image="https://cdn.dribbble.com/users/1212356/screenshots/2985985/w_cufsono_016.gif"
               />
             }
-            // actions={[<a href="#">This is a link</a>]}
           >
             <h4>Register</h4>
             <p>
