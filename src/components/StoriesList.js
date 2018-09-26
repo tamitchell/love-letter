@@ -35,9 +35,10 @@ export default function StoriesList (props) {
   return(
     <Row className="storylist-component" >
       <Col s={12} m={8} l={9}><h5>Stories</h5>
-      
+   
       <Col s={12} m={12} l={12}>{story}</Col>
       </Col>
+      
       <Col s={12} m={4} l={3}><h5>Last Updated</h5></Col>
     </Row>
   )

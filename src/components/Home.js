@@ -5,6 +5,7 @@ import fox from "../img/fox.png";
 
 const Home = () => {
   return (
+    <div className="wrapper">
     <Row className="home-component">
       <Col s={12} m={12} l={12}>
         <section>
@@ -73,8 +74,16 @@ const Home = () => {
           </Modal>
         </section>
       </Col>
-      <Col s={12} m={12} l={12} />
     </Row>
+    <Row>
+      <Col s={12} m={12} l={12}>
+      <Link to="/about">
+      Meet the Dev
+      </Link>
+      </Col>
+
+    </Row>
+    </div>
   );
 };
 

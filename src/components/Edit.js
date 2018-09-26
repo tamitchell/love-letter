@@ -33,14 +33,14 @@ class Edit extends Component {
       .database()
       .ref(`/items/${this.props.match.params.id}`);
     itemRef.remove();
-    setTimeout(this.props.history.push('/all_stories'), 4000)
+    setTimeout(this.props.history.push('/browse'), 4000)
 
   };
 
   onSubmit = e => {
     e.preventDefault();
     this.editStory(this.props.match.params.id);
-    setTimeout(this.props.history.push('/all_stories'), 4000)
+    setTimeout(this.props.history.push('/browse'), 4000)
   };
 
   render() {

@@ -11,6 +11,8 @@ import {
 const Login = props => {
   return (
     <Fragment>
+      <Row className="wrapper">
+
       <Row className="login-container">
         <Col 
         className="login-component"
@@ -49,6 +51,7 @@ const Login = props => {
             </Col>
           </Card>
         </Col>
+      </Row>
       </Row>
 
       {/* <Modal

@@ -1,0 +1,35 @@
+@import './mixins.scss';
+.home-browse {
+    margin-top: 2em;
+    @include flexbox();
+    position: relative;
+  img {
+      width: 30%;
+      max-width: 200px;
+      min-width: 150px;
+      position: absolute;
+      top: 10%;
+  }
+  span {
+      margin-top: 10em;
+      width: 70%;
+      max-width: 600px;
+      color: black;
+
+      .summary, .properties, h6 {
+          text-align: center;
+      }
+      h6 {
+          margin-top: 4em;
+      }
+  }
+}
+
+.story-content {
+    padding: 2em;
+    max-width: 900px;
+    @include starrybackground();
+    p {
+        white-space: pre-wrap;
+    }
+}
