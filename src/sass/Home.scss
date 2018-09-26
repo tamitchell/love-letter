@@ -88,7 +88,8 @@
 }
 
 .modal-container {
-  margin: 0;
+  display: block;
+  margin: 0 auto;
   padding: 0;
   border: none;
   box-shadow: none;
@@ -106,7 +107,6 @@
         color: white;
       }
       p {
-        // padding-top: 7em;
         font-size: 20px;
         color: black;
       }
