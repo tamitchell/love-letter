@@ -10,6 +10,7 @@ There are several versions of this project that range from having a MERN stack, 
 In the beginning, this application was heavily inspired by [Novelize](https://getnovelize.com/), a simplified novel-writing application that helps writers keep track of their writing flow, character progression, and manuscripts. I would say it is best known for it's wide-range customization features (i.e. the ability for the writer to add custom categories of what they would like to keep track of) as well as it's modern style and a rather simple interface that makes it easy to use and quick to learn.
 
 ![Screen shot of Novelize story writing Chapter One](https://lh3.googleusercontent.com/7pfOXfy9TygQ-riovUuQWxeF1gvG7-eSGVCrPSJPspY9ZMktC7u7AARvS224PofqE1F42pX8Rg=w640-h400-e365)
+
 *A screenshot of it's many features*
 
 That being said, I thoroughly enjoyed my time when I used Novelize during my days in college. Having a background in writing, I really appreciated the app's flexibility. Novelize has a ton of features and as well as a few core templates that allow it to appeal to not only novelists, but publishers, editors, and college students alike.
