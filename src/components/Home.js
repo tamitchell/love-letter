@@ -78,7 +78,7 @@ const Home = () => {
         </section>
       </Col>
     </Row>
-    <Row>
+    <Row className="meet-dev">
       <Col s={12} m={12} l={12}>
       <Link to="/about">
       Meet the Dev
