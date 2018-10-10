@@ -11,7 +11,7 @@ const About = () => {
     </span>
       <span className="card-panel">
         <h6>Meet Tasha Mitchell</h6>
-        <p className="summary"><em>blah</em></p>
+        <p className="summary"><em>Story of my life</em></p>
         <p className="properties">
           Web Developer | UX Designer | Artist
         </p>
