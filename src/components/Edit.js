@@ -7,7 +7,7 @@ class Edit extends Component {
     super(props);
     this.state = {
       story: {}
-    };
+    }
   }
 
   editStory = id => {
