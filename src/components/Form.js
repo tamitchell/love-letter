@@ -64,7 +64,7 @@ class WriteStory extends Component {
     };
     itemsRef.push(item);
 
-    setTimeout(this.props.history.push("/all_stories"), 4000);
+    setTimeout(this.props.history.push("/browse"), 4000);
   };
   render() {
     return (

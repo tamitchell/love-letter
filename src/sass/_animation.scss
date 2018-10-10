@@ -1,0 +1,35 @@
+@keyframes float {
+    0% {transform: translatey(0px);}
+    50% {transform: translatey(-20px);}
+    100%{transform: translatey(0px);}
+  }
+
+  @-moz-keyframes float {
+    0% {transform: translatey(0px);}
+    50% {transform: translatey(-20px);}
+    100%{transform: translatey(0px);}
+  }
+
+  @-webkit-keyframes float {
+    0% {transform: translatey(0px);}
+    50% {transform: translatey(-20px);}
+    100%{transform: translatey(0px);}
+  }
+
+  @keyframes pulsate {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.1);}
+    100%{transform: scale(1);}
+  }
+
+  @-moz-keyframes pulsate {
+    0% {transform: translatey(0px);}
+    50% {transform: translatey(-20px);}
+    100%{transform: translatey(0px);}
+  }
+
+  @-webkit-keyframes pulsate {
+    0% {transform: translatey(0px);}
+    50% {transform: translatey(-20px);}
+    100%{transform: translatey(0px);}
+  }
