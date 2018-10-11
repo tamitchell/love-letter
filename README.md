@@ -46,19 +46,32 @@ Currently such general features are thought to be of as such:
 
 ### UX Challenges
 
-WIP
+Probably the biggest initial hurdle with the design of this was choosing a proper color scheme that would help encourage the writer to write. I had noticed that Novelize had choosen to go with a warm orange color that is often associated with friendliness and creativity, but for my choice I felt locked between the decision to use a blue-based color palatte vs a purple-based one.
+
+![Rosy Purplish Color Scheme]()
 
 ### UX Solutions
 
-Explain how to run the automated tests for this system
+The reason for this challenge is less about what is most aesthetically pleasing and moreso about choosing colors that would fit the proper atmosphere for whatever time of day the author wishes to write. 
+
+While doing a bit of research and asking around, it was revealed that most writers (although the time at which they choose to write varies) openly admit that the time at which they feel most creative is during the early evening up until they are about to fall asleep. In this sense, I decided that working with a brighter color like orange or light blue would be less ideal, because those colors seem to be used more often than not to control attention and to stimulate. 
+
+Therefore, I decided to go with a more rosy gold, purplish color scheme because I thought the mood it encourages would be able to flux between both day and night without incurring eye fatigue or boredom.
 
 ### Developer Challenges
 
-WIP
+The core of my challenges code-wise lie in the initial way I've drawn up the database infrastructure as well as my unfamiliarity with Firebase and using online cloud storage as a database. My current issue is that because I am unfamiliar with how to retrieve nested data from the Firebase, the possibility the following tree structure:
+
+```user --> user's stories --> stories' chapters```
+
+has become sort of a hassle to implement because I have yet to find sufficient documentation on how to setup proper models with firebase. From my experience however, it seems that Firebase has a pretty flexbile infrastructure in that it merely adds on the differences in structure when a user or admin updates a document, and it is only when trying to pull this information back out on the front end (say, if one document has a "names" property and another doesn't within the same collection ) that you will then begin to run into problems.
+
+
 
 ### Developer Solutions
 
-WIP
+Although is listed a somewhat cumbersome issue, really the only issue that's stopping me from progressing is lack of time
+
 
 ## Built With
 
